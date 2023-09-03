@@ -1,4 +1,5 @@
 -   Elm Architecture uses an update function to transform state, which is like a redux store's reducer method with chained calls including side effects (eg fetch or random char generation) that feed into the model to produce a view as a function of the model.
+	- for instance, the FetchData branch of the updater function returns a model and fetchDataCmd, which triggers a subsequent call (an api fetch request side effect), which is used to transform state (the model), resulting in a payload ("DataFetched" struct type/shape with "data" values) and Cmd.none, which means no further calls (end of branch aka leaf)
 ```elm
 type Msg = Increment | Decrement | FetchData | DataFetched String
 
