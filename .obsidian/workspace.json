@@ -69,7 +69,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 200,
+    "collapsed": true
   },
   "right": {
     "id": "c2487d2f122ddb5e",
@@ -146,17 +147,17 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "ff4534f3283ec657",
+  "active": "abcebfa42c43424e",
   "lastOpenFiles": [
-    "wasmcloud/NATS.md",
-    "wasmcloud/Elm Architecture.md",
-    "wasmcloud/Bailey.md",
     "ThePrimeagen/DSA.md",
-    "wasmcloud",
+    "wasmcloud/Bailey.md",
+    "wasmcloud/Elm Architecture.md",
+    "wasmcloud/NATS.md",
+    "Marc Grabanski/Patterns for Reactivity with Modern Vanilla JS.md",
     "Josh Comeau/CSS For JS 1.md",
     "Corbin Crutchley/JS This.md",
+    "wasmcloud",
     "ThePrimeagen",
-    "Marc Grabanski/Patterns for Reactivity with Modern Vanilla JS.md",
     "Marc Grabanski",
     "Josh Comeau",
     "Corbin Crutchley",

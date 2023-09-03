@@ -1,4 +1,4 @@
-- 
+-   Elm Architecture uses an update function to transform state, which is like a redux store's reducer method with chained calls including side effects (eg fetch or random char generation) that feed into the model to produce a view as a function of the model.
 ```elm
 type Msg = Increment | Decrement | FetchData | DataFetched String
 
