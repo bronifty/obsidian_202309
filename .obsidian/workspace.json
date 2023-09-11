@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "c8640a8f3d4aa3f5",
+        "id": "464ee86b1023a03f",
         "type": "tabs",
         "children": [
           {
-            "id": "ff4534f3283ec657",
+            "id": "c0920e93d39342da",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "wasmcloud/Elm Architecture.md",
+                "file": "wasm/cloudflare pages functions wasm v bytecode alliance component model.md",
                 "mode": "source",
                 "source": false
               }
@@ -69,8 +69,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 200
   },
   "right": {
     "id": "c2487d2f122ddb5e",
@@ -86,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "wasmcloud/Elm Architecture.md",
+                "file": "wasm/cloudflare pages functions wasm v bytecode alliance component model.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "wasmcloud/Elm Architecture.md",
+                "file": "wasm/cloudflare pages functions wasm v bytecode alliance component model.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "wasmcloud/Elm Architecture.md"
+                "file": "wasm/cloudflare pages functions wasm v bytecode alliance component model.md"
               }
             }
           }
@@ -147,16 +146,24 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "abcebfa42c43424e",
+  "active": "c0920e93d39342da",
   "lastOpenFiles": [
+    "wasm/wasmcloud/NATS.md",
+    "wasm/wasmcloud/Elm Architecture.md",
+    "wasm/wasmcloud/Bailey.md",
+    "wasm/cloudflare pages functions wasm v bytecode alliance component model.md",
+    "ThePrimeagen/Deep Copy.md",
+    "wasm",
+    "ThePrimeagen/HackerRank Questions.md",
     "ThePrimeagen/DSA.md",
-    "wasmcloud/Bailey.md",
-    "wasmcloud/Elm Architecture.md",
-    "wasmcloud/NATS.md",
+    "logic room/Notes.md",
+    "logic room",
+    "Marc Grabanski/React with Observable.md",
+    "Marc Grabanski/Observable.md",
     "Marc Grabanski/Patterns for Reactivity with Modern Vanilla JS.md",
-    "Josh Comeau/CSS For JS 1.md",
     "Corbin Crutchley/JS This.md",
-    "wasmcloud",
+    "Josh Comeau/CSS For JS 1.md",
+    "wasm/wasmcloud",
     "ThePrimeagen",
     "Marc Grabanski",
     "Josh Comeau",
