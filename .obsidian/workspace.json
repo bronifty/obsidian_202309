@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "wasm/cloudflare pages functions wasm v bytecode alliance component model.md",
+                "file": "wasm/dynamic linking of wasm in browser.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "wasm/cloudflare pages functions wasm v bytecode alliance component model.md",
+                "file": "wasm/dynamic linking of wasm in browser.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "wasm/cloudflare pages functions wasm v bytecode alliance component model.md",
+                "file": "wasm/dynamic linking of wasm in browser.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "wasm/cloudflare pages functions wasm v bytecode alliance component model.md"
+                "file": "wasm/dynamic linking of wasm in browser.md"
               }
             }
           }
@@ -148,15 +148,20 @@
   },
   "active": "c0920e93d39342da",
   "lastOpenFiles": [
+    "wasm/guy bedford bytecode alliance componentize js jco wasm.png",
+    "wasm/liam randall wasmcloud keynote linux foundation wasmcon.png",
+    "wasm/fastly engineer wasm.png",
+    "wasm/fastly wasm 2.png",
+    "wasm/cloudflare pages functions wasm v bytecode alliance component model.md",
+    "wasm/dynamic linking of wasm in browser.md",
+    "logic room/Notes.md",
     "wasm/wasmcloud/NATS.md",
     "wasm/wasmcloud/Elm Architecture.md",
     "wasm/wasmcloud/Bailey.md",
-    "wasm/cloudflare pages functions wasm v bytecode alliance component model.md",
     "ThePrimeagen/Deep Copy.md",
     "wasm",
     "ThePrimeagen/HackerRank Questions.md",
     "ThePrimeagen/DSA.md",
-    "logic room/Notes.md",
     "logic room",
     "Marc Grabanski/React with Observable.md",
     "Marc Grabanski/Observable.md",
