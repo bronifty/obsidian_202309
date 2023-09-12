@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "wasm/dynamic linking of wasm in browser.md",
+                "file": "databricks/databricks courses.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "wasm/dynamic linking of wasm in browser.md",
+                "file": "databricks/databricks courses.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "wasm/dynamic linking of wasm in browser.md",
+                "file": "databricks/databricks courses.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "wasm/dynamic linking of wasm in browser.md"
+                "file": "databricks/databricks courses.md"
               }
             }
           }
@@ -148,13 +148,22 @@
   },
   "active": "c0920e93d39342da",
   "lastOpenFiles": [
-    "wasm/fastly wasm modularity sans microservices.png",
-    "wasm/guy bedford bytecode alliance componentize js jco wasm.png",
+    "databricks/databricks course-catalog.pdf",
+    "Matt Pocock/tsconfig.webp",
+    "databricks/databricks courses.md",
+    "databricks",
+    "wasm/fastly wasm values resources.png",
+    "Matt Pocock",
+    "wasm/fastly wasm dll's.png",
+    "wasm/fastly wasm sync function calls for inter-process comms.png",
+    "wasm/fastly wasm virtual platform layering.png",
+    "wasm/fastly wasm wasi contract 1.png",
     "wasm/liam randall wasmcloud keynote linux foundation wasmcon.png",
-    "wasm/fastly engineer wasm.png",
-    "wasm/fastly wasm 2.png",
-    "wasm/cloudflare pages functions wasm v bytecode alliance component model.md",
+    "wasm/guy bedford bytecode alliance componentize js jco wasm.png",
+    "wasm/fastly wasm wasi contract 2.png",
     "wasm/dynamic linking of wasm in browser.md",
+    "wasm/fastly wasi wasm standard interfaces.png",
+    "wasm/cloudflare pages functions wasm v bytecode alliance component model.md",
     "logic room/Notes.md",
     "wasm/wasmcloud/NATS.md",
     "wasm/wasmcloud/Elm Architecture.md",
@@ -177,8 +186,6 @@
     "8 Josh Comeau/CSS For JS 1.md",
     "8 Josh Comeau",
     "7 Marc Grabanski/Patterns for Reactivity with Modern Vanilla JS.md",
-    "7 Marc Grabanski",
-    "7 Corbin Crutchley/JS This.md",
-    "7 Corbin Crutchley"
+    "7 Corbin Crutchley/JS This.md"
   ]
 }
