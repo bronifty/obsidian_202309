@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "databricks/databricks courses.md",
+                "file": "wasm/dynamic linking of wasm in browser.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "databricks/databricks courses.md",
+                "file": "wasm/dynamic linking of wasm in browser.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "databricks/databricks courses.md",
+                "file": "wasm/dynamic linking of wasm in browser.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,17 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "databricks/databricks courses.md"
+                "file": "wasm/dynamic linking of wasm in browser.md"
+              }
+            }
+          },
+          {
+            "id": "208a60c84226c21f",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency"
               }
             }
           }
@@ -146,25 +156,26 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "c0920e93d39342da",
+  "active": "abcebfa42c43424e",
   "lastOpenFiles": [
+    "wasm/bytecode alliance/wasi cloud bytecode alliance roadmap.png",
+    "wasm/bytecode alliance",
+    "wasm/components share interface make http requests to link for modularity without microservices.png",
+    "wasm/cloudflare pages functions wasm v bytecode alliance component model.md",
+    "databricks/databricks courses.md",
+    "databricks/delta sharing zero copy.png",
     "databricks/databricks unity catalog.png",
     "databricks/koalas dataframe sql databricks.png",
     "databricks/spark sql databricks.png",
     "wasm/fastly wasi wasm standard interfaces.png",
-    "databricks/databricks courses.md",
-    "wasm/components share interface make http requests to link for modularity without microservices.png",
     "wasm/wasm fastly luke wagner roadmap preview 2 1.png",
     "wasm/wasm fastly luke wagner roadmap preview 2.png",
     "wasm/fastly wasm component model wasm core jco transpile.png",
     "databricks/databricks analytics tools integrations.png",
     "databricks/databricks course-catalog.pdf",
-    "databricks/databricks partners landscape dbt tableau.png",
-    "Matt Pocock/tsconfig.webp",
     "databricks",
     "Matt Pocock",
     "wasm/dynamic linking of wasm in browser.md",
-    "wasm/cloudflare pages functions wasm v bytecode alliance component model.md",
     "logic room/Notes.md",
     "wasm/wasmcloud/NATS.md",
     "wasm/wasmcloud/Elm Architecture.md",
@@ -183,7 +194,6 @@
     "ThePrimeagen",
     "Marc Grabanski",
     "Josh Comeau",
-    "Corbin Crutchley",
     "8 Josh Comeau/CSS For JS 1.md",
     "7 Marc Grabanski/Patterns for Reactivity with Modern Vanilla JS.md",
     "7 Corbin Crutchley/JS This.md"
