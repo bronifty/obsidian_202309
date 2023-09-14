@@ -11,15 +11,26 @@
             "id": "c0920e93d39342da",
             "type": "leaf",
             "state": {
+              "type": "image",
+              "state": {
+                "file": "databricks/media/lakehouse_fundamentals/databricks analytics tools integrations.png"
+              }
+            }
+          },
+          {
+            "id": "7b7de08f7994509d",
+            "type": "leaf",
+            "state": {
               "type": "markdown",
               "state": {
-                "file": "wasm/dynamic linking of wasm in browser.md",
+                "file": "databricks/Databricks Lakehouse Fundamentals.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -85,7 +96,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "wasm/dynamic linking of wasm in browser.md",
+                "file": "databricks/Databricks Lakehouse Fundamentals.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +113,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "wasm/dynamic linking of wasm in browser.md",
+                "file": "databricks/Databricks Lakehouse Fundamentals.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +136,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "wasm/dynamic linking of wasm in browser.md"
+                "file": "databricks/Databricks Lakehouse Fundamentals.md"
               }
             }
           },
@@ -156,26 +167,29 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "abcebfa42c43424e",
+  "active": "7b7de08f7994509d",
   "lastOpenFiles": [
-    "wasm/bytecode alliance/wasi cloud bytecode alliance roadmap.png",
+    "databricks/media/lakehouse_fundamentals/databricks_1.png",
+    "databricks/media/lakehouse_fundamentals/databricks analytics tools integrations.png",
+    "databricks/Databricks Lakehouse Fundamentals.md",
+    "databricks/media/lakehouse_fundamentals",
+    "databricks/media/lakehouse_fundamentals/koalas dataframe sql databricks.png",
+    "databricks/media/lakehouse_fundamentals/spark sql databricks.png",
+    "databricks/media/lakehouse_fundamentals/delta sharing zero copy.png",
+    "databricks/media/lakehouse_fundamentals/databricks_unity_catalog.png",
+    "databricks/media/lakehouse_fundamentals/databricks_metastore.png",
+    "databricks/media/lakehouse_fundamentals/databricks_11.png",
+    "databricks/media/lakehouse_fundamentals/databricks_10.png",
+    "databricks/media/lakehouse_fundamentals/databricks unity catalog.png",
+    "databricks/media/lakehouse_fundamentals/databricks partners landscape dbt tableau.png",
+    "databricks/media/lakehouse_fundamentals/databricks course-catalog.pdf",
+    "databricks/media",
+    "hashicorp",
+    "wasm/dynamic linking of wasm in browser.md",
     "wasm/bytecode alliance",
-    "wasm/components share interface make http requests to link for modularity without microservices.png",
     "wasm/cloudflare pages functions wasm v bytecode alliance component model.md",
-    "databricks/databricks courses.md",
-    "databricks/delta sharing zero copy.png",
-    "databricks/databricks unity catalog.png",
-    "databricks/koalas dataframe sql databricks.png",
-    "databricks/spark sql databricks.png",
-    "wasm/fastly wasi wasm standard interfaces.png",
-    "wasm/wasm fastly luke wagner roadmap preview 2 1.png",
-    "wasm/wasm fastly luke wagner roadmap preview 2.png",
-    "wasm/fastly wasm component model wasm core jco transpile.png",
-    "databricks/databricks analytics tools integrations.png",
-    "databricks/databricks course-catalog.pdf",
     "databricks",
     "Matt Pocock",
-    "wasm/dynamic linking of wasm in browser.md",
     "logic room/Notes.md",
     "wasm/wasmcloud/NATS.md",
     "wasm/wasmcloud/Elm Architecture.md",
@@ -191,9 +205,6 @@
     "Corbin Crutchley/JS This.md",
     "Josh Comeau/CSS For JS 1.md",
     "wasm/wasmcloud",
-    "ThePrimeagen",
-    "Marc Grabanski",
-    "Josh Comeau",
     "8 Josh Comeau/CSS For JS 1.md",
     "7 Marc Grabanski/Patterns for Reactivity with Modern Vanilla JS.md",
     "7 Corbin Crutchley/JS This.md"
