@@ -37,3 +37,16 @@ RESTORE TABLE my_table TO TIMESTAMP AS OF "2023-09-13"
 RESTORE TABLE my_table TO VERSION AS OF 36
 ```
 
+- compaction
+```sql
+OPTIMIZE my_table ZORDER BY column_name
+```
+- this will split the file by the column_name
+	- for instance if ZORDER is on ID and there are 2 files one from IDs 1-50 and another from 51-100, then the query will know that ID 30 is in file 1
+
+- vacuum 
+	- clean up files older than the retention period (default 7 days)
+```sql
+VACUUM table_name
+```
+
