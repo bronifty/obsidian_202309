@@ -5,7 +5,12 @@ Unity Cat > Delta Lake > Data Lake
 - transaction log allows time travel and audits
 - spark checks transaction log when making queries and updates table with latest info; user table is sync with master record; it also makes sure that users can't update with errant info
 - open source and integrates with all major analytics tools like Statch or Fivetran for ingestion, s3 for storage, spark redshift athena for query
+- 
 ![](./media/lakehouse_fundamentals/databricks_1.png)
+![](./media/lakehouse_fundamentals/databricks_2.png)
+![](./media/lakehouse_fundamentals/databricks_3.png)
+![](./media/lakehouse_fundamentals/databricks_4.png)
+
 - dark data is not catalogued
 - cardinality & partitioning
 - access control (rbac/abac) & audits are used for regulatory wrt PII (data governance)
@@ -18,6 +23,13 @@ Unity Cat > Delta Lake > Data Lake
 	- provide a central marketplace for distribution of data products to anywhere 
 	- privacy safe data clean rooms
 
+![](./media/lakehouse_fundamentals/databricks_7.png)
+
+![](./media/lakehouse_fundamentals/databricks_3.png)
+
+![](./media/lakehouse_fundamentals/databricks_4.png)
+
+- 
 - control v data planes security architecture 
 	- control plane is managed backend svcs provided by databricks (web app, configs, notebooks repos DBSQL, cluster mgr) - databricks account
 		- data encrypted in transit
@@ -40,7 +52,7 @@ Unity Cat > Delta Lake > Data Lake
 - metastore, catalog, schema, table, view, and function
 - unity catalog - catalogs, schemas, tables, views, storage creds, external locations
 - ![](databricks_unity_catalog.png)
-- ![metastore](databricks_metastore.png)
+
 - metastore is a metadata database for auditing and governing including ACLs management of the workspaces, each which has its own Hive metastore
 	- a logical construct for organizing data and its associated metadata (control plane => cloud storage)
 	- a reference for a collection of metadata and a link to cloud storage container 
@@ -64,4 +76,13 @@ Unity Cat > Delta Lake > Data Lake
 
 ![](databricks_10.png)
 ![](databricks_11.png)
+
+- challenges for data eng: data ingestion, isolated dev and prod, ci/cd, version controlled transformations
+- 3rd party orchestration tools, pipeline arch perf tuning 
+- databricks has: unified platform with managed ingestion, schema detection, enforcement and evolution paired with declarative auto-scaling data flow integrated with a lakehouse native orchestrator supporting different workflows
+- e2e solution for ingest, transform, proc, sched, deliver
+- complexity of building pipelines and automating ETL workloads is automated on the data lake with autorecover observability scheduling and orchestration of non-interactive tasks as a DAG on databricks compute cluster
+
+![](./media/lakehouse_fundamentals/databricks_12.png)
+
 

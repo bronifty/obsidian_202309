@@ -8,16 +8,6 @@
         "type": "tabs",
         "children": [
           {
-            "id": "c0920e93d39342da",
-            "type": "leaf",
-            "state": {
-              "type": "image",
-              "state": {
-                "file": "databricks/media/lakehouse_fundamentals/databricks analytics tools integrations.png"
-              }
-            }
-          },
-          {
             "id": "7b7de08f7994509d",
             "type": "leaf",
             "state": {
@@ -29,8 +19,7 @@
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -80,7 +69,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 327.5086555480957
   },
   "right": {
     "id": "c2487d2f122ddb5e",
@@ -169,31 +158,32 @@
   },
   "active": "7b7de08f7994509d",
   "lastOpenFiles": [
-    "databricks/media/lakehouse_fundamentals/databricks_1.png",
-    "databricks/media/lakehouse_fundamentals/databricks analytics tools integrations.png",
-    "databricks/Databricks Lakehouse Fundamentals.md",
-    "databricks/media/lakehouse_fundamentals",
-    "databricks/media/lakehouse_fundamentals/koalas dataframe sql databricks.png",
-    "databricks/media/lakehouse_fundamentals/spark sql databricks.png",
-    "databricks/media/lakehouse_fundamentals/delta sharing zero copy.png",
-    "databricks/media/lakehouse_fundamentals/databricks_unity_catalog.png",
-    "databricks/media/lakehouse_fundamentals/databricks_metastore.png",
+    "media/lake.md",
+    "media",
+    "databricks/media/lakehouse_fundamentals/databricks_12.png",
     "databricks/media/lakehouse_fundamentals/databricks_11.png",
     "databricks/media/lakehouse_fundamentals/databricks_10.png",
-    "databricks/media/lakehouse_fundamentals/databricks unity catalog.png",
-    "databricks/media/lakehouse_fundamentals/databricks partners landscape dbt tableau.png",
+    "databricks/media/lakehouse_fundamentals/databricks_8.png",
+    "databricks/media/lakehouse_fundamentals/databricks_7.png",
+    "databricks/media/lakehouse_fundamentals/databricks_6.png",
+    "databricks/media/lakehouse_fundamentals/databricks_5.png",
+    "databricks/media/lakehouse_fundamentals/databricks_4.png",
+    "databricks/Databricks Lakehouse Fundamentals.md",
+    "wasm/cloudflare pages functions wasm v bytecode alliance component model.md",
+    "wasm/components share interface make http requests to link for modularity without microservices.png",
+    "wasm/bytecode alliance/wasi cloud bytecode alliance roadmap.png",
+    "wasm/wasmcloud/Bailey.md",
     "databricks/media/lakehouse_fundamentals/databricks course-catalog.pdf",
+    "databricks/media/lakehouse_fundamentals",
     "databricks/media",
     "hashicorp",
     "wasm/dynamic linking of wasm in browser.md",
     "wasm/bytecode alliance",
-    "wasm/cloudflare pages functions wasm v bytecode alliance component model.md",
     "databricks",
     "Matt Pocock",
     "logic room/Notes.md",
     "wasm/wasmcloud/NATS.md",
     "wasm/wasmcloud/Elm Architecture.md",
-    "wasm/wasmcloud/Bailey.md",
     "ThePrimeagen/Deep Copy.md",
     "wasm",
     "ThePrimeagen/HackerRank Questions.md",
@@ -204,7 +194,6 @@
     "Marc Grabanski/Patterns for Reactivity with Modern Vanilla JS.md",
     "Corbin Crutchley/JS This.md",
     "Josh Comeau/CSS For JS 1.md",
-    "wasm/wasmcloud",
     "8 Josh Comeau/CSS For JS 1.md",
     "7 Marc Grabanski/Patterns for Reactivity with Modern Vanilla JS.md",
     "7 Corbin Crutchley/JS This.md"
