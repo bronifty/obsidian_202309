@@ -50,3 +50,43 @@ OPTIMIZE my_table ZORDER BY column_name
 VACUUM table_name
 ```
 
+- restore example
+```sql
+DELETE FROM employes;
+SELECT * FROM employees;
+RESTORE TABLE employees TO VERSION AS OF 4;
+SELECT * FROM employees;
+DESCRIBE HISTORY employees;
+```
+	- the log adds an entry for the RESTORE
+
+- let's optimize
+```sql
+DESCRIBE DETAIL employees;
+```
+	- shows numFiles 3
+```sql
+OPTIMIZE employees
+ZORDER BY (id);
+```
+	- now it's 1 file
+
+- let's vacuum to get rid of unused files 
+```sql
+SET spark.databricks.delta.retentionDurationCheck.enabled = false;
+VACUUM employees RETAIN 0 HOURS;
+```
+	- only keep latest copy (retain 0 hours)
+
+- we can check it with DESCRIBE DETAIL which will show us the db file location which we can then ls with fs and it will show us one db file in the hive warehouse and the log
+```sql
+DESCRIBE DETAIL employees;
+%fs ls 'dbfs:/user/hive/warehouse/employees'
+```
+
+- now we cannot query an old table version
+```sql
+SELECT * FROM employees@v2; -- no entries
+SELECT * FROM employees@v9; -- yes entries (latest version)
+```
+
