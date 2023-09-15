@@ -11,11 +11,9 @@
             "id": "7b7de08f7994509d",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "image",
               "state": {
-                "file": "databricks/Databricks Lakehouse Fundamentals.md",
-                "mode": "source",
-                "source": false
+                "file": "databricks/media/lakehouse_fundamentals/databricks_8.png"
               }
             }
           }
@@ -85,7 +83,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "databricks/Databricks Lakehouse Fundamentals.md",
+                "file": "databricks/media/lakehouse_fundamentals/databricks_8.png",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +100,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "databricks/Databricks Lakehouse Fundamentals.md",
+                "file": "databricks/media/lakehouse_fundamentals/databricks_8.png",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +123,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "databricks/Databricks Lakehouse Fundamentals.md"
+                "file": "databricks/media/lakehouse_fundamentals/databricks_8.png"
               }
             }
           },
@@ -158,20 +156,20 @@
   },
   "active": "7b7de08f7994509d",
   "lastOpenFiles": [
-    "databricks/media/lakehouse_fundamentals/databricks_16.png",
-    "databricks/media/lakehouse_fundamentals/databricks_15.png",
-    "databricks/media/lakehouse_fundamentals/databricks_14.png",
-    "databricks/media/lakehouse_fundamentals/databricks_13.png",
-    "media/lake.md",
-    "media",
+    "databricks/media/lakehouse_fundamentals/databricks_6.png",
+    "databricks/media/lakehouse_fundamentals/databricks_5.png",
+    "databricks/media/lakehouse_fundamentals/databricks_4.png",
+    "databricks/media/lakehouse_fundamentals/databricks_3.png",
+    "databricks/media/lakehouse_fundamentals/databricks_2.png",
+    "databricks/media/lakehouse_fundamentals/databricks_1.png",
+    "databricks/Databricks Lakehouse Fundamentals.md",
     "databricks/media/lakehouse_fundamentals/databricks_12.png",
     "databricks/media/lakehouse_fundamentals/databricks_11.png",
     "databricks/media/lakehouse_fundamentals/databricks_10.png",
     "databricks/media/lakehouse_fundamentals/databricks_8.png",
     "databricks/media/lakehouse_fundamentals/databricks_7.png",
-    "databricks/media/lakehouse_fundamentals/databricks_6.png",
-    "databricks/media/lakehouse_fundamentals/databricks_5.png",
-    "databricks/Databricks Lakehouse Fundamentals.md",
+    "media/lake.md",
+    "media",
     "wasm/cloudflare pages functions wasm v bytecode alliance component model.md",
     "wasm/wasmcloud/Bailey.md",
     "databricks/media/lakehouse_fundamentals/databricks course-catalog.pdf",
