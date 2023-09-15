@@ -6,10 +6,10 @@ Unity Cat > Delta Lake > Data Lake
 - spark checks transaction log when making queries and updates table with latest info; user table is sync with master record; it also makes sure that users can't update with errant info
 - open source and integrates with all major analytics tools like Statch or Fivetran for ingestion, s3 for storage, spark redshift athena for query
 - 
-![](./media/lakehouse_fundamentals/databricks_1.png)
-![](./media/lakehouse_fundamentals/databricks_2.png)
-![](./media/lakehouse_fundamentals/databricks_3.png)
-![](./media/lakehouse_fundamentals/databricks_4.png)
+![](databricks_1.png)
+![](databricks_2.png)
+![](databricks_3.png)
+![](databricks_4.png)
 
 - dark data is not catalogued
 - cardinality & partitioning
@@ -23,11 +23,11 @@ Unity Cat > Delta Lake > Data Lake
 	- provide a central marketplace for distribution of data products to anywhere 
 	- privacy safe data clean rooms
 
-![](./media/lakehouse_fundamentals/databricks_7.png)
+![](databricks_7.png)
 
-![](./media/lakehouse_fundamentals/databricks_3.png)
+![](databricks_3.png)
 
-![](./media/lakehouse_fundamentals/databricks_4.png)
+![](databricks_4.png)
 
 - 
 - control v data planes security architecture 
@@ -83,25 +83,25 @@ Unity Cat > Delta Lake > Data Lake
 - e2e solution for ingest, transform, proc, sched, deliver
 - complexity of building pipelines and automating ETL workloads is automated on the data lake with autorecover observability scheduling and orchestration of non-interactive tasks as a DAG on databricks compute cluster
 
-![](./media/lakehouse_fundamentals/databricks_12.png)
+![](databricks_12.png)
 
-![](./media/lakehouse_fundamentals/databricks_13.png)
+![](databricks_13.png)
 
-![](./media/lakehouse_fundamentals/databricks_14.png)
+![](databricks_14.png)
 
-![](./media/lakehouse_fundamentals/databricks_15.png)
+![](databricks_15.png)
 
-![](./media/lakehouse_fundamentals/databricks_16.png)
+![](databricks_16.png)
 
-![](./media/lakehouse_fundamentals/databricks_17.png)
+![](databricks_17.png)
 
-![](./media/lakehouse_fundamentals/databricks_18.png)
+![](databricks_18.png)
 
-![](./media/lakehouse_fundamentals/databricks_19.png)
+![](databricks_19.png)
 
 
-![](./media/lakehouse_fundamentals/databricks_20.png)
+![](databricks_20.png)
 
-![](./media/lakehouse_fundamentals/databricks_21.png)
+![](databricks_21.png)
 
 

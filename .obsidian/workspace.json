@@ -11,9 +11,11 @@
             "id": "7b7de08f7994509d",
             "type": "leaf",
             "state": {
-              "type": "image",
+              "type": "markdown",
               "state": {
-                "file": "databricks/media/lakehouse_fundamentals/databricks_8.png"
+                "file": "databricks/eng_assoc/Data Engineering Associate.md",
+                "mode": "source",
+                "source": false
               }
             }
           }
@@ -83,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "databricks/media/lakehouse_fundamentals/databricks_8.png",
+                "file": "databricks/eng_assoc/Data Engineering Associate.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -100,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "databricks/media/lakehouse_fundamentals/databricks_8.png",
+                "file": "databricks/eng_assoc/Data Engineering Associate.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -123,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "databricks/media/lakehouse_fundamentals/databricks_8.png"
+                "file": "databricks/eng_assoc/Data Engineering Associate.md"
               }
             }
           },
@@ -156,25 +158,27 @@
   },
   "active": "7b7de08f7994509d",
   "lastOpenFiles": [
-    "databricks/media/lakehouse_fundamentals/databricks_6.png",
-    "databricks/media/lakehouse_fundamentals/databricks_5.png",
-    "databricks/media/lakehouse_fundamentals/databricks_4.png",
-    "databricks/media/lakehouse_fundamentals/databricks_3.png",
-    "databricks/media/lakehouse_fundamentals/databricks_2.png",
-    "databricks/media/lakehouse_fundamentals/databricks_1.png",
-    "databricks/Databricks Lakehouse Fundamentals.md",
-    "databricks/media/lakehouse_fundamentals/databricks_12.png",
-    "databricks/media/lakehouse_fundamentals/databricks_11.png",
-    "databricks/media/lakehouse_fundamentals/databricks_10.png",
-    "databricks/media/lakehouse_fundamentals/databricks_8.png",
-    "databricks/media/lakehouse_fundamentals/databricks_7.png",
+    "databricks/lakehouse_fundamentals/Databricks Lakehouse Fundamentals.md",
+    "databricks/eng_assoc/Data Engineering Associate.md",
+    "databricks/eng_assoc",
+    "databricks/lakehouse_fundamentals",
+    "databricks/lakehouse_fundamentals/media/lakehouse_fundamentals/databricks_8.png",
+    "databricks/lakehouse_fundamentals/media/lakehouse_fundamentals/databricks_6.png",
+    "databricks/lakehouse_fundamentals/media/lakehouse_fundamentals/databricks_5.png",
+    "databricks/lakehouse_fundamentals/media/lakehouse_fundamentals/databricks_4.png",
+    "databricks/lakehouse_fundamentals/media/lakehouse_fundamentals/databricks_3.png",
+    "databricks/lakehouse_fundamentals/media/lakehouse_fundamentals/databricks_2.png",
+    "databricks/lakehouse_fundamentals/media/lakehouse_fundamentals/databricks_1.png",
+    "databricks/lakehouse_fundamentals/media/lakehouse_fundamentals/databricks_12.png",
+    "databricks/lakehouse_fundamentals/media/lakehouse_fundamentals/databricks_11.png",
+    "databricks/lakehouse_fundamentals/media/lakehouse_fundamentals/databricks_10.png",
     "media/lake.md",
     "media",
     "wasm/cloudflare pages functions wasm v bytecode alliance component model.md",
     "wasm/wasmcloud/Bailey.md",
-    "databricks/media/lakehouse_fundamentals/databricks course-catalog.pdf",
-    "databricks/media/lakehouse_fundamentals",
-    "databricks/media",
+    "databricks/lakehouse_fundamentals/media/lakehouse_fundamentals/databricks course-catalog.pdf",
+    "databricks/lakehouse_fundamentals/media/lakehouse_fundamentals",
+    "databricks/lakehouse_fundamentals/media",
     "hashicorp",
     "wasm/dynamic linking of wasm in browser.md",
     "wasm/bytecode alliance",
@@ -184,10 +188,8 @@
     "wasm/wasmcloud/NATS.md",
     "wasm/wasmcloud/Elm Architecture.md",
     "ThePrimeagen/Deep Copy.md",
-    "wasm",
     "ThePrimeagen/HackerRank Questions.md",
     "ThePrimeagen/DSA.md",
-    "logic room",
     "Marc Grabanski/React with Observable.md",
     "Marc Grabanski/Observable.md",
     "Marc Grabanski/Patterns for Reactivity with Modern Vanilla JS.md",

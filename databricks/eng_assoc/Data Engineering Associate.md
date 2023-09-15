@@ -1,0 +1,4 @@
+- Delta Lake is a cluster and storage of files and their logs
+- log is source of truth
+- writes create a copy of the parquet and a copy of the log with the new changes in each. reads always check the log first and get latest data. it's atomic so if a part of the write fails, it will not be recorded in the log and the new file will be discarded. 
+- 
