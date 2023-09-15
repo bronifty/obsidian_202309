@@ -85,4 +85,10 @@ Unity Cat > Delta Lake > Data Lake
 
 ![](./media/lakehouse_fundamentals/databricks_12.png)
 
+![](./media/lakehouse_fundamentals/databricks_13.png)
+
+![](./media/lakehouse_fundamentals/databricks_14.png)
+
+![](./media/lakehouse_fundamentals/databricks_15.png)
+
 

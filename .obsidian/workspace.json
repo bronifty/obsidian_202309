@@ -158,6 +158,9 @@
   },
   "active": "7b7de08f7994509d",
   "lastOpenFiles": [
+    "databricks/media/lakehouse_fundamentals/databricks_15.png",
+    "databricks/media/lakehouse_fundamentals/databricks_14.png",
+    "databricks/media/lakehouse_fundamentals/databricks_13.png",
     "media/lake.md",
     "media",
     "databricks/media/lakehouse_fundamentals/databricks_12.png",
@@ -170,8 +173,6 @@
     "databricks/media/lakehouse_fundamentals/databricks_4.png",
     "databricks/Databricks Lakehouse Fundamentals.md",
     "wasm/cloudflare pages functions wasm v bytecode alliance component model.md",
-    "wasm/components share interface make http requests to link for modularity without microservices.png",
-    "wasm/bytecode alliance/wasi cloud bytecode alliance roadmap.png",
     "wasm/wasmcloud/Bailey.md",
     "databricks/media/lakehouse_fundamentals/databricks course-catalog.pdf",
     "databricks/media/lakehouse_fundamentals",
