@@ -25,6 +25,7 @@ DESCRIBE HISTORY smartphones; -- enumerate data file versions (maintained in log
 
 DELETE FROM smartphones; -- copy data file on write to new version with no data
 RESTORE TABLE smartphones TO VERSION AS OF 2; -- point head in log to previous data file version
+SELECT * FROM my_table@v36; -- select from table out of its versions described in history
 
 DROP TABLE smartphones; -- destructive
 SET spark.databricks.delta.retentionDurationCheck.enabled = false; -- don't do this but just for demo to clear the default retention of 1 week for vacuum
@@ -32,6 +33,9 @@ VACUUM employees RETAIN 0 HOURS; -- destructive for all but most recent data fil
 
 OPTIMIZE employees
 ZORDER BY (id); --- compaction (combine multiple files; DESCRIBE DETAIL will show how many files comprise the table before and after compaction)
+
+%fs ls 'dbfs:/user/hive/warehouse/employees/_delta_log'
+%fs head 'dbfs:/user/hive/warehouse/employees/_delta_log/00000000000000000004.json'
 ```
 
 
