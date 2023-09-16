@@ -68,6 +68,20 @@ CREATE GLOBAL TEMP VIEW view_name
 AS query; -- global view (cluster scoped)
 SELECT *
 FROM global_temp.view_name; -- referenced by its prefix in query
+
+SHOW TABLES; -- show tables and views
+
+CREATE TEMPORARY VIEW temp_view_phones_brands
+AS SELECT DISTINCT brand 
+FROM hive_metastore.default.smartphones;
+SELECT * FROM temp_view_phones_brands;
+SHOW TABLES IN global_temp; 
+CREATE GLOBAL TEMPORARY VIEW latest_phones
+AS SELECT * FROM smartphones
+WHERE year > 2020
+ORDER BY year DESC;
+SELECT * FROM global_temp.latest_phones;
+
 ```
 
 

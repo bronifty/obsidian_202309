@@ -274,3 +274,36 @@ FROM global_temp.view_name;
 ```
 
 
+### Query Files Directly
+```sql
+SELECT * FROM <file_format>.'path/to/file'
+```
+- extract text files as raw strings (JSON, CSV, TXT)
+```sql
+SELECT * FROM csv.'/path/to/file'
+```
+- extract files as raw bytes (media/unstructured data)
+```sql
+SELECT * FROM binaryFile.'/path/to/file'
+```
+
+### Register Tables from Files
+```sql
+CREATE TABLE table_name
+AS SELECT * FROM file_format.'/path/to/file';
+```
+
+```sql
+CREATE TEMPORARY VIEW temp_view_phones_brands
+AS SELECT DISTINCT brand 
+FROM hive_metastore.default.smartphones;
+SELECT * FROM temp_view_phones_brands;
+SHOW TABLES IN global_temp; 
+CREATE GLOBAL TEMPORARY VIEW latest_phones
+AS SELECT * FROM smartphones
+WHERE year > 2020
+ORDER BY year DESC;
+SELECT * FROM global_temp.latest_phones;
+```
+
+
