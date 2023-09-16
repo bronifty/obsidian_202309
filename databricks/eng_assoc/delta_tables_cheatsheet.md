@@ -1,7 +1,6 @@
 ```sql 
 CREATE TABLE IF NOT EXISTS smartphones
-(id INT, name STRING, brand STRING, year INT);
-
+(id INT, name STRING, brand STRING, year INT); 
 INSERT INTO smartphones
 VALUES (1, 'iPhone 14', 'Apple', 2022),
       (2, 'iPhone 13', 'Apple', 2021),
@@ -12,7 +11,7 @@ VALUES (1, 'iPhone 14', 'Apple', 2022),
       (7, 'Galaxy S9', 'Samsung', 2016),
       (8, '12 Pro', 'Xiaomi', 2022),
       (9, 'Redmi 11T Pro', 'Xiaomi', 2022),
-      (10, 'Redmi Note 11', 'Xiaomi', 2021);
+      (10, 'Redmi Note 11', 'Xiaomi', 2021); -- let's start with a table and some data
 
 CREATE TABLE smartphone_clone
 DEEP CLONE smartphones; -- copy log and data
@@ -39,3 +38,19 @@ ZORDER BY (id); --- compaction (combine multiple files; DESCRIBE DETAIL will sho
 ```
 
 
+```sql
+CREATE DATABASE db_name;
+CREATE SCHEMA db_name;
+```
+- hive metastore is a repository of metadata for databases tables etc
+
+```sql
+CREATE DATABASE db_x -- DATABASE and SCHEMA are synonyms;
+CREATE SCHEMA db_y
+LOCATION 'dbfs:/custom/path/db_y.db'; -- specify the data/logs location
+
+USE db_y; -- create tables under db_y schema in hive repo
+CREATE TABLE table_1; -- will be managed table
+CREATE TABLE table_2
+LOCATION 'dbfs:/some/path_1/table_2'; -- will be external table
+```
