@@ -49,5 +49,25 @@ INSERT INTO table_2
 VALUES (1,2,3);
 DESCRIBE EXTENDED table_1; -- dbfs:/custom/path/db_y.db/table_1
 DESCRIBE EXTENDED table_2; -- dbfs:/some/path_1/table_2
+
+CREATE TABLE new_table
+COMMENT "Contains PII"
+PARTITIONED BY (city, birth_date)
+LOCATION '/some/path'
+AS SELECT id, name, email, birth_date, city FROM users; -- declarations available that aren't available to CTA (Create Table As query)
+
+ALTER TABLE table_name ADD CONSTRAINT constraint_name constraint_details
+ALTER TABLE orders ADD CONSTRAINT customer_name_not_null NOT NULL (customer_name); -- not null constraint
+ALTER TABLE orders ADD CONSTRAINT valid_date CHECK (date > '2020-01-01'); -- check constraint
+
+CREATE VIEW view_name
+AS query (select * from table where blah); -- stored view
+CREATE TEMP VIEW view_name
+AS query; -- temp view (session scoped)
+CREATE GLOBAL TEMP VIEW view_name
+AS query; -- global view (cluster scoped)
+SELECT *
+FROM global_temp.view_name; -- referenced by its prefix in query
 ```
+
 
