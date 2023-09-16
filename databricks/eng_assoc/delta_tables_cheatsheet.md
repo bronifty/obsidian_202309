@@ -19,7 +19,7 @@ DEEP CLONE smartphones; -- copy log and data
 CREATE TABLE smartphone_shallow_clone
 SHALLOW CLONE smartphones; -- copy log which points to data file version at time of clone
 
-DESCRIBE DETAIL smartphones; -- point to data & log file location (will show if there are multiple physical files making up a table)
+DESCRIBE [EXTENDED] DETAIL smartphones; -- point to data & log file location (will show if there are multiple physical files making up a table)
 DESCRIBE HISTORY smartphones; -- enumerate data file versions (maintained in log)
 
 DELETE FROM smartphones; -- copy data file on write to new version with no data
@@ -35,16 +35,7 @@ ZORDER BY (id); --- compaction (combine multiple files; DESCRIBE DETAIL will sho
 
 %fs ls 'dbfs:/user/hive/warehouse/employees/_delta_log'
 %fs head 'dbfs:/user/hive/warehouse/employees/_delta_log/00000000000000000004.json'
-```
 
-
-```sql
-CREATE DATABASE db_name;
-CREATE SCHEMA db_name;
-```
-- hive metastore is a repository of metadata for databases tables etc
-
-```sql
 CREATE DATABASE db_x -- DATABASE and SCHEMA are synonyms;
 CREATE SCHEMA db_y
 LOCATION 'dbfs:/custom/path/db_y.db'; -- specify the data/logs location
@@ -52,5 +43,11 @@ LOCATION 'dbfs:/custom/path/db_y.db'; -- specify the data/logs location
 USE db_y; -- create tables under db_y schema in hive repo
 CREATE TABLE table_1; -- will be managed table
 CREATE TABLE table_2
+(width INT, length INT, height INT)
 LOCATION 'dbfs:/some/path_1/table_2'; -- will be external table
+INSERT INTO table_2
+VALUES (1,2,3);
+DESCRIBE EXTENDED table_1; -- dbfs:/custom/path/db_y.db/table_1
+DESCRIBE EXTENDED table_2; -- dbfs:/some/path_1/table_2
 ```
+

@@ -159,6 +159,7 @@
   "active": "7b7de08f7994509d",
   "lastOpenFiles": [
     "databricks/eng_assoc/Data Engineering Associate.md",
+    "databricks/eng_assoc/Querying+Files.pdf",
     "databricks/eng_assoc/delta_tables_cheatsheet.md",
     "databricks/eng_assoc/Relational+Entities+on+Databricks.pdf",
     "databricks/eng_assoc/Set+Up+Delta+Tables.pdf",
@@ -186,7 +187,6 @@
     "media",
     "databricks/lakehouse_fundamentals/media/lakehouse_fundamentals/databricks course-catalog.pdf",
     "databricks/lakehouse_fundamentals/media/lakehouse_fundamentals",
-    "databricks/lakehouse_fundamentals/media",
     "logic room/Notes.md",
     "ThePrimeagen/Deep Copy.md",
     "ThePrimeagen/HackerRank Questions.md",
