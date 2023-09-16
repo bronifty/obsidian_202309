@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "databricks/eng_assoc/Data Engineering Associate.md",
+                "file": "databricks/eng_assoc/delta_tables_cheatsheet.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "databricks/eng_assoc/Data Engineering Associate.md",
+                "file": "databricks/eng_assoc/delta_tables_cheatsheet.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "databricks/eng_assoc/Data Engineering Associate.md",
+                "file": "databricks/eng_assoc/delta_tables_cheatsheet.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "databricks/eng_assoc/Data Engineering Associate.md"
+                "file": "databricks/eng_assoc/delta_tables_cheatsheet.md"
               }
             }
           },
@@ -158,7 +158,12 @@
   },
   "active": "7b7de08f7994509d",
   "lastOpenFiles": [
+    "databricks/eng_assoc/Data Engineering Associate.md",
+    "databricks/eng_assoc/delta_tables_cheatsheet.md",
     "databricks/eng_assoc/Relational+Entities+on+Databricks.pdf",
+    "databricks/eng_assoc/Set+Up+Delta+Tables.pdf",
+    "databricks/eng_assoc/Course+Materials 1.dbc",
+    "databricks/eng_assoc/Course+Materials.dbc",
     "wasm/wasmcloud/NATS.md",
     "wasm/wasmcloud/Bailey.md",
     "wasm/wasmcloud/Elm Architecture.md",
@@ -166,7 +171,6 @@
     "wasm/dynamic linking of wasm in browser.md",
     "wasm/components share interface make http requests to link for modularity without microservices.png",
     "wasm/bytecode alliance/wasi cloud bytecode alliance roadmap.png",
-    "databricks/eng_assoc/Data Engineering Associate.md",
     "databricks/lakehouse_fundamentals/Databricks Lakehouse Fundamentals.md",
     "databricks/eng_assoc",
     "databricks/lakehouse_fundamentals",
@@ -183,10 +187,6 @@
     "databricks/lakehouse_fundamentals/media/lakehouse_fundamentals/databricks course-catalog.pdf",
     "databricks/lakehouse_fundamentals/media/lakehouse_fundamentals",
     "databricks/lakehouse_fundamentals/media",
-    "hashicorp",
-    "wasm/bytecode alliance",
-    "databricks",
-    "Matt Pocock",
     "logic room/Notes.md",
     "ThePrimeagen/Deep Copy.md",
     "ThePrimeagen/HackerRank Questions.md",

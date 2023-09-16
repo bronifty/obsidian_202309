@@ -154,5 +154,123 @@ VALUES (4, 5, 6);
 DESCRIBE EXTENDED external_default;
 ```
 
+- custom schema
+```sql 
+CREATE SCHEMA custom
+LOCATION 'dbfs:/Shared/schemas/custom.db';
+DESCRIBE DATABASE EXTENDED custom;
+```
+
+- create managed & external tables in custom schema
+```sql
+USE custom;
+CREATE TABLE managed_custom
+(width INT, length INT, height INT);
+INSERT INTO managed_custom
+VALUES (3 INT, 2 INT, 1 INT);
+-----------------------------------
+
+CREATE TABLE external_custom
+(width INT, length INT, height INT)
+LOCATION 'dbfs:/mnt/demo/external_custom';
+INSERT INTO external_custom
+VALUES (3 INT, 2 INT, 1 INT);
+```
+
+```sql
+DESCRIBE EXTENDED managed_custom
+```
+- dbfs:/Shared/schemas/custom.db/managed_custom
+
+```sql
+DESCRIBE EXTENDED external_custom
+```
+- dbfs:/mnt/demo/external_custom
+
+```sql
+DROP TABLE managed_custom;
+DROP TABLE external_custom;
+```
+
+```sql
+%fs ls 'dbfs:/Shared/schemas/custom.db/managed_custom'
+```
+- filenotfoundexception
+
+```sql
+%fs ls 'dbfs:/mnt/demo/external_custom'
+```
+- dbfs:/mnt/demo/external_custom/_delta_log/
+- dbfs:/mnt/demo/external_custom/part-00000-bed3caba-0dc9-42a1-aa7b-4bba9c8a01f8.c000.snappy.parquet
+
+- without Delta Tables if we drop a managed table, it is destructive the files are removed and it can't be restored; with Delta Tables we can restore a dropped table
+
+### Delta Tables
+- CTAS statements (CREATE TABLE _ AS SELECT)
+	- auto infer schema no manual declaration; define with data
+	- eg CREATE TABLE table_1 AS SELECT col_1, col_2 FROM table_2
+	- additional options:
+```sql
+CREATE TABLE new_table
+COMMENT "Contains PII"
+PARTITIONED BY (city, birth_date)
+LOCATION '/some/path'
+AS SELECT id, name, email, birth_date, city FROM users
+```
+		
+- Table constraints
+	- NOT NULL constraints
+	- CHECK constraints
+```sql
+ALTER TABLE table_name ADD CONSTRAINT constraint_name constraint_details
+ALTER TABLE orders ADD CONSTRAINT valid_date CHECK (date > '2020-01-01');
+```
+
+#### Cloning Delta Lake tables
+- deep clone - full copies of data + metadata from a source table to a target
+	- full copy of structure and data
+```sql
+CREATE TABLE table_clone
+DEEP CLONE source_table
+```
+		- can sync changes
+
+- shallow clone - copy logs only (logs point to original source data)
+	- use case would be to modify the structure aka schema of your table to test how it would perform without copying any data
+```sql
+CREATE TABLE table_clone
+SHALLOW CLONE source_table
+```
+
+### CTAS
+```sql
+
+```
+
+
+### Views
+- Stored Views
+	- persisted objects
+```sql
+CREATE VIEW view_name
+AS query (select * from table where blah)
+```
+- Temp views (session-scoped); what creates a new session:
+	- open new notebook
+	- detaching and reattaching to cluster
+	- installing python package & restarting python interpreter
+	- restarting cluster
+```sql
+CREATE TEMP VIEW view_name
+AS query
+```
+- Global temp (cluster scoped)
+```sql
+CREATE GLOBAL TEMP VIEW view_name
+AS query;
+
+SELECT *
+FROM global_temp.view_name;
+```
 
 
