@@ -14,6 +14,10 @@ employees_file = dbutils.fs.ls('dbfs:/user/hive/warehouse/employees'); # get a h
 print(employees_file);
 display(employees_file); # print grid format
 %fs ls 'dbfs:/user/hive/warehouse/employees'; # shortcut for the above
+
+%python # the pragma to interpret this as python in a sql file
+files = dbutils.fs.ls(f"{dataset_bookstore}/books-csv") # f-string interpolating dataset_bookstore directory
+display(files) # print the grid of the files
 ```
 
 ```sql 
@@ -114,6 +118,10 @@ CREATE TEMPORARY VIEW temp_view_name (col_name_1 col_type_1)
 USING data_source
 OPTIONS (key1="val1", path="/path/to/file"); -- view from raw
 CREATE TABLE table_name AS SELECT * FROM temp_view_name; -- Delta CTAS
+
+SELECT *,
+    input_file_name() source_file -- input_file_name() is a built-in Spark function to get the filename, which is useful for debugging
+FROM json.`${dataset.bookstore}/customers-json`; -- select from all the files in the directory (will auto-combine all files if they have same schema)
 ```
 
 
