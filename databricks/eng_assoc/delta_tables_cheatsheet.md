@@ -15,7 +15,7 @@ print(employees_file);
 display(employees_file); # print grid format
 %fs ls 'dbfs:/user/hive/warehouse/employees'; # shortcut for the above
 
-%python # the pragma to interpret this as python in a sql file
+%python # the pragma aka pyspark 'magic command' to interpret this as python in a sql file
 files = dbutils.fs.ls(f"{dataset_bookstore}/books-csv") # f-string interpolating dataset_bookstore directory
 display(files) # print the grid of the files
 ```
@@ -104,20 +104,21 @@ WHERE year > 2020
 ORDER BY year DESC;
 SELECT * FROM global_temp.latest_phones;
 
-CREATE TABLE table_name
-(col_name_1 col_type_1, col_name_2 col_type_2)
-USING csv
-OPTIONS (header = "true", delimiter = ";")
-LOCATION = path; -- non-delta table from raw
-CREATE TABLE table_name
-(col_name_1 col_type_1)
-USING JDBC
-OPTIONS (url="jdbc:sqlite://hostname:port", dbtable="database.table", user="username", password="pwd"); -- non-delta table from raw
+CREATE TABLE books_unparsed AS
+SELECT * FROM csv.`${dataset.bookstore}/books-csv`;
+SELECT * FROM books_unparsed; -- a single column with rows 
 
-CREATE TEMPORARY VIEW temp_view_name (col_name_1 col_type_1)
-USING data_source
-OPTIONS (key1="val1", path="/path/to/file"); -- view from raw
-CREATE TABLE table_name AS SELECT * FROM temp_view_name; -- Delta CTAS
+CREATE TEMP VIEW books_tmp_vw
+   (book_id STRING, title STRING, author STRING, category STRING, price DOUBLE)
+USING CSV
+OPTIONS (
+  path = "${dataset.bookstore}/books-csv/export_*.csv",
+  header = "true",
+  delimiter = ";"
+); -- specify the raw data source with USING
+CREATE TABLE books AS 
+  SELECT * FROM books_tmp_vw; -- CTAS from view
+SELECT * FROM books -- grid format multiple columns
 
 SELECT *,
     input_file_name() source_file -- input_file_name() is a built-in Spark function to get the filename, which is useful for debugging
