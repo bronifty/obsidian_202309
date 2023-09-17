@@ -10,9 +10,10 @@
 ```python
 dbutils.help();
 dbutils.fs.help();
-files = dbutils.fs.ls('/databricks-datasets');
-print(files);
-display(files); # print grid format
+employees_file = dbutils.fs.ls('dbfs:/user/hive/warehouse/employees'); # get a handle to the file
+print(employees_file);
+display(employees_file); # print grid format
+%fs ls 'dbfs:/user/hive/warehouse/employees'; # shortcut for the above
 ```
 
 ```sql 
