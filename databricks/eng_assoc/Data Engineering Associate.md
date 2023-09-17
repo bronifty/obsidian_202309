@@ -306,4 +306,41 @@ ORDER BY year DESC;
 SELECT * FROM global_temp.latest_phones;
 ```
 
+- query files directly
+- extract files as raw contents
+- config options of external sources
+- use CTAS to create Delta Lake Tables
+
+- select from s
+```sql
+SELECT * FROM json.`/path/to/file.json` -- select from structured json parquet
+SELECT * FROM text.`/path/to/file.json` -- extract text as raw string for json csv tsv txt used for raw strings and custom parsing
+SELECT * FROM binaryFile.`/path/to/file.jpg` -- extract as raw bytes
+```
+- load extracted data into lakehouse
+```sql
+CREATE TABLE table_name AS SELECT * FROM file_format.`path/to/file`; -- auto-infer no support for manual declarations
+CREATE TABLE table_name 
+USING data_source_type
+OPTIONS (key1 = val1, key2 = val2)
+LOCATION = path -- USING gives us options to create external non-delta table
+```
+
+```sql
+CREATE TABLE table_name
+(col_name_1 col_type_1, col_name_2 col_type_2)
+USING csv
+OPTIONS (header = "true", delimiter = ";")
+LOCATION = path; -- non-delta table from raw
+CREATE TABLE table_name
+(col_name_1 col_type_1)
+USING JDBC
+OPTIONS (url="jdbc:sqlite://hostname:port", dbtable="database.table", user="username", password="pwd"); -- non-delta table from raw
+
+CREATE TEMPORARY VIEW temp_view_name (col_name_1 col_type_1)
+USING data_source
+OPTIONS (key1="val1", path="/path/to/file"); -- view from raw
+CREATE TABLE table_name AS SELECT * FROM temp_view_name; -- Delta CTAS
+```
+
 

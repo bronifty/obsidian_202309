@@ -82,6 +82,20 @@ WHERE year > 2020
 ORDER BY year DESC;
 SELECT * FROM global_temp.latest_phones;
 
+CREATE TABLE table_name
+(col_name_1 col_type_1, col_name_2 col_type_2)
+USING csv
+OPTIONS (header = "true", delimiter = ";")
+LOCATION = path; -- non-delta table from raw
+CREATE TABLE table_name
+(col_name_1 col_type_1)
+USING JDBC
+OPTIONS (url="jdbc:sqlite://hostname:port", dbtable="database.table", user="username", password="pwd"); -- non-delta table from raw
+
+CREATE TEMPORARY VIEW temp_view_name (col_name_1 col_type_1)
+USING data_source
+OPTIONS (key1="val1", path="/path/to/file"); -- view from raw
+CREATE TABLE table_name AS SELECT * FROM temp_view_name; -- Delta CTAS
 ```
 
 
