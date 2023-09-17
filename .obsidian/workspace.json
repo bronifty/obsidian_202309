@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "databricks/eng_assoc/delta_tables_cheatsheet.md",
+                "file": "aws_fundamentals/aws_fundamentals.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "databricks/eng_assoc/delta_tables_cheatsheet.md",
+                "file": "aws_fundamentals/aws_fundamentals.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "databricks/eng_assoc/delta_tables_cheatsheet.md",
+                "file": "aws_fundamentals/aws_fundamentals.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "databricks/eng_assoc/delta_tables_cheatsheet.md"
+                "file": "aws_fundamentals/aws_fundamentals.md"
               }
             }
           },
@@ -158,11 +158,16 @@
   },
   "active": "7b7de08f7994509d",
   "lastOpenFiles": [
-    "databricks/eng_assoc/Data Engineering Associate.md",
+    "aws_fundamentals/media/aws_fundamentals_1.png",
+    "aws_fundamentals/media",
+    "aws_fundamentals/aws_fundamentals.md",
     "databricks/eng_assoc/delta_tables_cheatsheet.md",
-    "databricks/eng_assoc/Querying+Files.pdf",
-    "databricks/eng_assoc/Relational+Entities+on+Databricks.pdf",
-    "databricks/eng_assoc/Set+Up+Delta+Tables.pdf",
+    "aws_fundamentals",
+    "databricks/eng_assoc/Data Engineering Associate.md",
+    "databricks/eng_assoc/media/Querying+Files.pdf",
+    "databricks/eng_assoc/media",
+    "databricks/eng_assoc/media/Relational+Entities+on+Databricks.pdf",
+    "databricks/eng_assoc/media/Set+Up+Delta+Tables.pdf",
     "databricks/eng_assoc/Course+Materials 1.dbc",
     "databricks/eng_assoc/Course+Materials.dbc",
     "wasm/wasmcloud/NATS.md",
@@ -182,19 +187,15 @@
     "databricks/lakehouse_fundamentals/media/lakehouse_fundamentals/databricks_3.png",
     "databricks/lakehouse_fundamentals/media/lakehouse_fundamentals/databricks_2.png",
     "databricks/lakehouse_fundamentals/media/lakehouse_fundamentals/databricks_1.png",
-    "databricks/lakehouse_fundamentals/media/lakehouse_fundamentals/databricks_12.png",
     "media/lake.md",
-    "media",
-    "databricks/lakehouse_fundamentals/media/lakehouse_fundamentals/databricks course-catalog.pdf",
-    "databricks/lakehouse_fundamentals/media/lakehouse_fundamentals",
     "logic room/Notes.md",
-    "ThePrimeagen/Deep Copy.md",
-    "ThePrimeagen/HackerRank Questions.md",
-    "ThePrimeagen/DSA.md",
-    "Marc Grabanski/React with Observable.md",
-    "Marc Grabanski/Observable.md",
-    "Marc Grabanski/Patterns for Reactivity with Modern Vanilla JS.md",
-    "Corbin Crutchley/JS This.md",
+    "the_primeagen/Deep Copy.md",
+    "the_primeagen/HackerRank Questions.md",
+    "the_primeagen/DSA.md",
+    "marc_grabanski/React with Observable.md",
+    "marc_grabanski/Observable.md",
+    "marc_grabanski/Patterns for Reactivity with Modern Vanilla JS.md",
+    "corbin_crutchley/JS This.md",
     "Josh Comeau/CSS For JS 1.md",
     "8 Josh Comeau/CSS For JS 1.md",
     "7 Marc Grabanski/Patterns for Reactivity with Modern Vanilla JS.md",

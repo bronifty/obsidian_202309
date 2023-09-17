@@ -18,6 +18,9 @@ display(employees_file); # print grid format
 %python # the pragma aka pyspark 'magic command' to interpret this as python in a sql file
 files = dbutils.fs.ls(f"{dataset_bookstore}/books-csv") # f-string interpolating dataset_bookstore directory
 display(files) # print the grid of the files
+
+%fs ls '/databricks-datasets' # list internal dbfs datasets
+%run ../another_file.py # import module
 ```
 
 ```sql 
