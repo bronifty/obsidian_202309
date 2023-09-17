@@ -7,6 +7,14 @@
 
 ### CHEATSHEET
 
+```python
+dbutils.help();
+dbutils.fs.help();
+files = dbutils.fs.ls('/databricks-datasets');
+print(files);
+display(files); # print grid format
+```
+
 ```sql 
 CREATE TABLE IF NOT EXISTS smartphones
 (id INT, name STRING, brand STRING, year INT); 
