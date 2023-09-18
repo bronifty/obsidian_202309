@@ -126,6 +126,9 @@ SELECT * FROM books -- grid format multiple columns
 SELECT *,
     input_file_name() source_file -- input_file_name() is a built-in Spark function to get the filename, which is useful for debugging
 FROM json.`${dataset.bookstore}/customers-json`; -- select from all the files in the directory (will auto-combine all files if they have same schema)
+
+CREATE OR REPLACE TABLE orders AS
+SELECT * FROM parquet.`${dataset.bookstore}/orders`
 ```
 
 

@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "aws_fundamentals/aws_fundamentals.md",
+                "file": "databricks/eng_assoc/delta_tables_cheatsheet.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "aws_fundamentals/aws_fundamentals.md",
+                "file": "databricks/eng_assoc/delta_tables_cheatsheet.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "aws_fundamentals/aws_fundamentals.md",
+                "file": "databricks/eng_assoc/delta_tables_cheatsheet.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "aws_fundamentals/aws_fundamentals.md"
+                "file": "databricks/eng_assoc/delta_tables_cheatsheet.md"
               }
             }
           },
@@ -158,13 +158,13 @@
   },
   "active": "7b7de08f7994509d",
   "lastOpenFiles": [
+    "databricks/eng_assoc/Data Engineering Associate.md",
+    "databricks/eng_assoc/delta_tables_cheatsheet.md",
+    "aws_fundamentals/aws_fundamentals.md",
     "aws_fundamentals/media/aws_fundamentals_1.png",
     "aws_fundamentals/media/aws_fundamentals_2.png",
-    "aws_fundamentals/aws_fundamentals.md",
     "aws_fundamentals/media",
-    "databricks/eng_assoc/delta_tables_cheatsheet.md",
     "aws_fundamentals",
-    "databricks/eng_assoc/Data Engineering Associate.md",
     "databricks/eng_assoc/media/Querying+Files.pdf",
     "databricks/eng_assoc/media",
     "databricks/eng_assoc/media/Relational+Entities+on+Databricks.pdf",
@@ -187,7 +187,6 @@
     "databricks/lakehouse_fundamentals/media/lakehouse_fundamentals/databricks_4.png",
     "databricks/lakehouse_fundamentals/media/lakehouse_fundamentals/databricks_3.png",
     "databricks/lakehouse_fundamentals/media/lakehouse_fundamentals/databricks_2.png",
-    "databricks/lakehouse_fundamentals/media/lakehouse_fundamentals/databricks_1.png",
     "media/lake.md",
     "logic room/Notes.md",
     "the_primeagen/Deep Copy.md",
