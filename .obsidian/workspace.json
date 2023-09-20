@@ -168,14 +168,14 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "abcebfa42c43424e",
+  "active": "7b7de08f7994509d",
   "lastOpenFiles": [
     "databricks/eng_assoc/Data Engineering Associate.md",
+    "databricks/eng_assoc/delta_tables_cheatsheet.md",
     "the_primeagen/DSA.md",
     "the_primeagen/HackerRank Questions.md",
     "wing/wing notes.md",
     "wing",
-    "databricks/eng_assoc/delta_tables_cheatsheet.md",
     "databricks/lakehouse_fundamentals/Databricks Lakehouse Fundamentals.md",
     "aws_fundamentals/aws_fundamentals.md",
     "aws_fundamentals/media/aws_fundamentals_1.png",

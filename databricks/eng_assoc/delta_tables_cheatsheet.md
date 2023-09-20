@@ -161,9 +161,14 @@ ON b.book_id = u.book_id AND b.title = u.title
 WHEN NOT MATCHED AND u.category = 'Computer Science' THEN 
   INSERT *; -- merge only computer science books into books table; no matched predicate
 
-SELECT customer_id, from_json('profile', schema_of_json('{column returned from SELECT profile from customers}'))
+SELECT customer_id, from_json('profile', schema_of_json('{column returned from SELECT profile from customers}')) as profile_struct
 FROM customers;
+
+SELECT customer_id, profile_struct.first_name, profile_struct.address.country
+FROM parsed_customers -- struct gives us access to nested properties
 ````
+
+
 
 
 

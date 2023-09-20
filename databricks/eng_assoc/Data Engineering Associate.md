@@ -363,3 +363,9 @@ FROM customers;
 
 SELECT * FROM parsed_customers
 ```
+
+- working with structs allows us to access dot properties
+```sql
+SELECT customer_id, profile_struct.first_name, profile_struct.address.country
+FROM parsed_customers
+```
