@@ -128,7 +128,43 @@ SELECT *,
 FROM json.`${dataset.bookstore}/customers-json`; -- select from all the files in the directory (will auto-combine all files if they have same schema)
 
 CREATE OR REPLACE TABLE orders AS
-SELECT * FROM parquet.`${dataset.bookstore}/orders`
-```
+SELECT * FROM parquet.`${dataset.bookstore}/orders`;
+
+INSERT OVERWRITE orders
+SELECT * FROM parquet.`${dataset.bookstore}/orders`; -- overwrite only without changing schema (the main way delta lake enforces schema is by overwrite rather than create or replace)
+
+INSERT INTO orders
+SELECT * FROM parquet.`${dataset.bookstore}/orders-new; -- append data to existing table
+
+CREATE OR REPLACE TEMP VIEW customers_updates AS 
+SELECT * FROM json.`${dataset.bookstore}/customers-json-new`;
+
+MERGE INTO customers c
+USING customers_updates u
+ON c.customer_id = u.customer_id
+WHEN MATCHED AND c.email IS NULL AND u.email IS NOT NULL THEN
+  UPDATE SET email = u.email, updated = u.updated
+WHEN NOT MATCHED THEN INSERT *; -- merge with matched predicate
+
+CREATE OR REPLACE TEMP VIEW books_updates
+   (book_id STRING, title STRING, author STRING, category STRING, price DOUBLE)
+USING CSV
+OPTIONS (
+  path = "${dataset.bookstore}/books-csv-new",
+  header = "true",
+  delimiter = ";"
+);
+SELECT * FROM books_updates;
+MERGE INTO books b
+USING books_updates u
+ON b.book_id = u.book_id AND b.title = u.title
+WHEN NOT MATCHED AND u.category = 'Computer Science' THEN 
+  INSERT *; -- merge only computer science books into books table; no matched predicate
+
+SELECT customer_id, from_json('profile', schema_of_json('{column returned from SELECT profile from customers}'))
+FROM customers;
+````
+
+
 
 

@@ -354,3 +354,12 @@ CREATE TABLE orders AS
 SELECT * FROM parquet.`${dataset.bookstore}/orders`
 ```
 
+```sql
+CREATE OR REPLACE TEMP VIEW parsed_customers AS
+
+SELECT customer_id, from_json(profile, schema_of_json('{"first_name":"Thomas","last_name":"Lane","gender":"Male","address":{"street":"06 Boulevard Victor Hugo","city":"Paris","country":"France"}}')) AS profile_struct
+
+FROM customers;
+
+SELECT * FROM parsed_customers
+```
