@@ -271,7 +271,7 @@ SELECT * FROM (
     'B07', 'B08', 'B09', 'B10', 'B11', 'B12'
   )
 );
-SELECT * FROM transactions -- pivots book quantity across the columns providing a unique set of customer with all book ids in the columns and quantity in the row which looks like customer book1 book2 in the header and customer_1 1 null in the row
+SELECT * FROM transactions -- pivots book quantity across the columns flattening order info for each customer which is useful for dashboard and ml inference
 
 
 ````
