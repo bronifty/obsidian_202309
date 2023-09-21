@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "databricks/eng_assoc/delta_tables_cheatsheet.md",
+                "file": "databricks/eng_assoc/Data Engineering Associate.md",
                 "mode": "source",
                 "source": false
               }
@@ -25,13 +25,14 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "databricks/eng_assoc/Data Engineering Associate.md",
+                "file": "databricks/eng_assoc/delta_tables_cheatsheet.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -168,7 +169,7 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "7b7de08f7994509d",
+  "active": "cebd0e92a6690dcd",
   "lastOpenFiles": [
     "databricks/eng_assoc/Data Engineering Associate.md",
     "databricks/eng_assoc/delta_tables_cheatsheet.md",

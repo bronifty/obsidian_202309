@@ -369,3 +369,104 @@ SELECT * FROM parsed_customers
 SELECT customer_id, profile_struct.first_name, profile_struct.address.country
 FROM parsed_customers
 ```
+
+Both `explode` and `flatten` functions are used to manipulate arrays in PySpark and they work differently.
+
+The `explode` function takes an array of structs as input and returns a new row for each struct in the array. For example, if you have an array column with three elements, `explode` would create three rows each with only one of the elements from that array.
+
+On the other hand, the `flatten` function takes an array of arrays as input and returns a new array that is the flattened version of the input array. The resulting array is a single-level array that contains all the elements from the input array.
+
+Here's an example to illustrate the difference between the two functions:
+
+Suppose you have a table called "students" with a column called "courses", where the "courses" column is an array of structs with the fields "name" and "grade". If you apply `explode` to the "courses" column, you would get a new row for each course, where each row has only one course and its corresponding name and grade. If you apply `flatten` to the "courses" column, you would get a new array that contains all the names and grades for all the courses, concatenated into a single-level array.
+
+Here is the example illustrating the above explanation:
+
+Input data:
+
+[SQL](https://dbc-93d97377-d7c8.cloud.databricks.com/?o=5630293092916573#)
+
+[](https://dbc-93d97377-d7c8.cloud.databricks.com/?o=5630293092916573# "Run Cell")[](https://dbc-93d97377-d7c8.cloud.databricks.com/?o=5630293092916573# "Replace active cell content")[](https://dbc-93d97377-d7c8.cloud.databricks.com/?o=5630293092916573# "Copy code")
+
++---------
+
++-------------------------+
+
+| name    | 
+
+courses                 |
+
++---------
+
++-------------------------+
+
+| Alice   | [{Math, 90}, {Science, 
+
+85}] |
+
+| Bob     | [{Math, 80}, {Science, 
+
+70}] |
+
++---------
+
++-------------------------+
+
+`explode` example:
+
+[SQL](https://dbc-93d97377-d7c8.cloud.databricks.com/?o=5630293092916573#)
+
+[](https://dbc-93d97377-d7c8.cloud.databricks.com/?o=5630293092916573# "Run Cell")[](https://dbc-93d97377-d7c8.cloud.databricks.com/?o=5630293092916573# "Replace active cell content")[](https://dbc-93d97377-d7c8.cloud.databricks.com/?o=5630293092916573# "Copy code")
+
+SELECT name, explode(courses) AS 
+
+course
+
+FROM students;
+
+Output of `explode`:
+
+[SQL](https://dbc-93d97377-d7c8.cloud.databricks.com/?o=5630293092916573#)
+
+[](https://dbc-93d97377-d7c8.cloud.databricks.com/?o=5630293092916573# "Run Cell")[](https://dbc-93d97377-d7c8.cloud.databricks.com/?o=5630293092916573# "Replace active cell content")[](https://dbc-93d97377-d7c8.cloud.databricks.com/?o=5630293092916573# "Copy code")
+
++------+---------------+
+
+| name | course.name   |
+
++------+---------------+
+
+| Alice| Math          |
+
+| Alice| Science       |
+
+| Bob  | Math          |
+
+| Bob  | Science       |
+
++------+---------------+
+
+`flatten` example:
+
+[SQL](https://dbc-93d97377-d7c8.cloud.databricks.com/?o=5630293092916573#)
+
+[](https://dbc-93d97377-d7c8.cloud.databricks.com/?o=5630293092916573# "Run Cell")[](https://dbc-93d97377-d7c8.cloud.databricks.com/?o=5630293092916573# "Replace active cell content")[](https://dbc-93d97377-d7c8.cloud.databricks.com/?o=5630293092916573# "Copy code")
+
+SELECT name, flatten(array(course.
+
+name for course in courses)) AS 
+
+course_names
+
+FROM students;
+
+Output of `flatten`:
+
+text
+
++------+------------------+  
+| name | course_names     |  
++------+------------------+  
+| Alice| [Math, Science]  |  
+| Bob  | [Math, Science]  |  
++------+------------------+

@@ -166,10 +166,40 @@ FROM customers;
 
 SELECT customer_id, profile_struct.first_name, profile_struct.address.country
 FROM parsed_customers -- struct gives us access to nested properties
+
+SELECT order_id, customer_id, explode(books) AS book
+FROM orders; -- explode puts each element of an array on its own row (eg if there are 2 book JSON objects in an array, there will be 2 rows, one per book and the other columns like customer_id and order_id will repeat)
+
+SELECT customer_id,
+  collect_set(order_id) AS orders_set,
+  collect_set(books.book_id) AS books_set
+FROM orders
+GROUP BY customer_id;
+
+SELECT customer_id, collect_set(book) AS unique_books
+FROM (
+  SELECT order_id, customer_id, explode(books) AS book 
+  FROM orders
+) AS tmp
+GROUP BY customer_id; -- explode subquery isolates each item to a row; collect_set then reaggregates the books as a unique list per customer; without explode, the set cannot be guaranteed for uniqueness, because each unexploded array of books could have dupes
+
+-- collect set = aggregate a Set (unique set of values)
+-- explode = extract JSON obj from array & put each on a separate row
+-- flatten = flatten nested arrays
 ````
 
 
-
+```ts
+const schema = {
+     name: 'string',
+     age: 'number',
+     address: {
+       street: 'string',
+       city: 'string',
+       coordinates: ['number', 'number']
+     }
+   };
+```
 
 
 
