@@ -15,6 +15,12 @@ print(employees_file);
 display(employees_file); # print grid format
 %fs ls 'dbfs:/user/hive/warehouse/employees'; # shortcut for the above
 
+files = dbutils.fs.ls(f"{dataset_bookstore}/orders-raw")
+display(files)
+# dbfs:/mnt/demo-datasets/bookstore/orders-raw/01.parquet
+%sql SELECT * FROM parquet.`/mnt/demo-datasets/bookstore/orders-raw/01.parquet`
+
+
 %python # the pragma aka pyspark 'magic command' to interpret this as python in a sql file
 files = dbutils.fs.ls(f"{dataset_bookstore}/books-csv") # f-string interpolating dataset_bookstore directory
 display(files) # print the grid of the files
@@ -42,8 +48,10 @@ display(books_csv) # displays a grid of the books
 ```sql
 SELECT * FROM text.`/databricks-datasets/cs100/lab1/data-001/shakespeare.txt` -- select from a raw file directly after you find it
 ```
-
-
+- raw data query
+```python
+%sql SELECT * FROM parquet.`/mnt/demo-datasets/bookstore/orders-raw/01.parquet`
+```
 
 
 
@@ -273,8 +281,112 @@ SELECT * FROM (
 );
 SELECT * FROM transactions -- pivots book quantity across the columns flattening order info for each customer which is useful for dashboard and ml inference
 
+SELECT
+  order_id,
+  books,
+  FILTER (books, i -> i.quantity >= 2) AS multiple_copies
+FROM orders; -- filter the books array of structs for quantity 2; projects a multiple_copies column with [{"book_id":"B09","quantity":2,"subtotal":48}] where the filter matches and [] when it doesn't
+
+SELECT order_id, multiple_copies
+FROM (
+  SELECT
+    order_id,
+    FILTER (books, i -> i.quantity >= 2) AS multiple_copies
+  FROM orders)
+WHERE size(multiple_copies) > 0; -- WHERE size filters out the empty array (looking for length of array > 0)
+
+SELECT
+  order_id,
+  books,
+  TRANSFORM (
+    books,
+    b -> CAST(b.subtotal * 0.8 AS INT)
+  ) AS subtotal_after_discount
+FROM orders; -- projects a subtotal_after_discount column with 20% discount applied
+
+CREATE OR REPLACE FUNCTION get_url(email STRING)
+RETURNS STRING
+RETURN concat("https://www.", split(email, "@")[1]) -- UDF get url from email
+
+SELECT email, get_url(email) domain
+FROM customers; -- returns dabby2y@japanpost.jp https://www.japanpost.jp
+
+DESCRIBE FUNCTION get_url; -- Function: hive_metastore.default.get_url
+DESCRIBE FUNCTION EXTENDED get_url; -- provides definition
+
+CREATE FUNCTION site_type(email STRING)
+RETURNS STRING
+RETURN CASE 
+          WHEN email like "%.com" THEN "Commercial business"
+          WHEN email like "%.org" THEN "Non-profits organization"
+          WHEN email like "%.edu" THEN "Educational institution"
+          ELSE concat("Unknow extenstion for domain: ", split(email, "@")[1])
+       END;
+
+SELECT email, site_type(email) as domain_category
+FROM customers -- shows metadata column about the site type
+
+DROP FUNCTION get_url;
+DROP FUNCTION site_type; -- drop UDF like table
 
 ````
+
+```python
+# stream is continuous data like files landing in cloud storage, db updates captured from cdc feed, and events queued in a pub/sub message feed
+# spark structured streaming can achieve dual goals of:
+# 1 reprocess entire source dataset each time
+# 2 only process new data added since last update
+# treat every source and sink as a table 
+# spark streaming and delta table both keep WAL; streaming is for exactly once; delta table is for consistent data
+# repeatable data source (eg cloud bucket, persistent messaging queue) & idempotent sinks allows spark structured streaming to have e2e exactly once semantics under any failure condition 
+# some ops are not supported by streaming data frame like sorting and deduplication
+(spark.readStream
+      .table("books")
+      .createOrReplaceTempView("books_streaming_tmp_vw")
+) # create a streaming dataframe
+%sql SELECT * FROM books_streaming_tmp_vw # queries the temp view
+%sql INSERT INTO books values ("B19", "Introduction to Modeling and Simulation", "Mark W. Spong", "Computer Science", 25),
+        ("B20", "Robot Modeling and Control", "Mark W. Spong", "Computer Science", 30),
+        ("B21", "Turing's Vision: The Birth of Computer Science", "Chris Bernhardt", "Computer Science", 35) # will insert into books, causing the streaming query above (SELECT * FROM books+streaming_tmp_vw) to update
+
+# structured streaming provides fault tolerance & idempotency (exactly once) guarantees via checkpointing and WAL (write-ahead-log)
+streamDF = spark.readStream.table("input_table") # read from input table 
+streamDF.writeStream
+.trigger(processingTime="2 minutes") # trigger intervals
+.outputMode("append") # overwrite or append (similar to static workloads)
+.option("checkpointLocation", "/path") # keeps track of the progress of your stream processing in a cloud bucket (checkpoints cannot be shared between multiple streams)
+.table("output_table") # write to output table
+
+%sql
+ SELECT * 
+ FROM books_streaming_tmp_vw
+ ORDER BY author; # query fails because streaming doesn't support sorting or deduplication
+
+%sql
+CREATE OR REPLACE TEMP VIEW author_counts_tmp_vw AS (
+  SELECT author, count(book_id) AS total_books
+  FROM books_streaming_tmp_vw
+  GROUP BY author
+) # query for next query
+
+(spark.table("author_counts_tmp_vw")                               
+      .writeStream  
+      .trigger(processingTime='4 seconds')
+      .outputMode("complete") # complete is required for aggregation stream to overwrite the new calc (count(book_id) AS total_books)
+      .option("checkpointLocation", "dbfs:/mnt/demo/author_counts_checkpoint")
+      .table("author_counts")
+) # spark api creates a streaming data frame based on a streaming view (and a static data frame based on a static view); the incremental logic must be established in the definition of a streaming view in order to establish incremental reads => incremental writes
+# streaming query is an always-on incremental query
+(spark.table("author_counts_tmp_vw")                               
+      .writeStream           
+      .trigger(availableNow=True)
+      .outputMode("complete")
+      .option("checkpointLocation", "dbfs:/mnt/demo/author_counts_checkpoint")
+      .table("author_counts")
+      .awaitTermination()
+) # writeStream table can be overwritten with a new definition; this one processes everything synchronously and shuts down (batch mode)
+
+```
 
 
 ```ts

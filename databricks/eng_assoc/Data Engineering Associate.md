@@ -470,3 +470,87 @@ text
 | Alice| [Math, Science]  |  
 | Bob  | [Math, Science]  |  
 +------+------------------+
+
+
+### Structured Streaming
+- read from input table write to output table
+- guarantees:
+	- fault tolerance via checkpointing & WAL (write-ahead-logs)
+	- exactly once idempotent sinks
+```python
+streamDF = spark.readStream.table("input_table") # read from input table 
+streamDF.writeStream.trigger(processingTime="2 minutes").outputMode("append").option("checkpointLocation", "/path").table("output_table") # write to output table
+```
+- log is written to checkpoint folder ssc.checkpoint("hdfs:///checkpoint") ahead of writing to the delta table; it looks something like so
+```txt
+20/06/14 14:16:35 INFO SparkContext: Running Spark version 2.4.5
+20/06/14 14:16:36 INFO SparkContext: Submitted application: Example Spark App
+20/06/14 14:16:36 INFO SecurityManager: Changing view acls to: user
+20/06/14 14:16:36 INFO SecurityManager: Changing modify acls to: user
+20/06/14 14:16:36 INFO SecurityManager: Changing view acls groups to: 
+20/06/14 14:16:36 INFO SecurityManager: Changing modify acls groups to: 
+20/06/14 14:16:36 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(user); groups with view permissions: 
+20/06/14 14:16:36 INFO Utils: Successfully started service 'driverClient' on port 57351.
+20/06/14 14:16:36 INFO SparkEnv: Registering MapOutputTracker
+20/06/14 14:16:36 INFO SparkEnv: Registering BlockManagerMaster
+20/06/14 14:16:36 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+20/06/14 14:16:36 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+20/06/14 14:16:36 INFO DiskBlockManager: Created local directory at /private/var/folders/qj/wf3zhr1j10l0z64gj0tyldtw0000gn/T/blockmgr-914a8c2d-8b2d-48ba-915e-9146e5c42580
+20/06/14 14:16:36 INFO MemoryStore: MemoryStore started with capacity 1874.1 MB
+20/06/14 14:16:36 INFO SparkEnv: Registering OutputCommitCoordinator
+20/06/14 14:16:37 INFO Utils: Successfully started service 'SparkUI' on port 4040.
+20/06/14 14:16:37 INFO SparkUI: Bound SparkUI to 0.0.0.0, and started at http://ip-172-31-39-242.us-west-2.compute.internal:4040
+```
+
+- so there is no data in WAL?
+  
+In Apache Spark, the Write Ahead Log (WAL) is used to guarantee fault tolerance and exactly-once processing of data. The WAL is maintained by Spark's streaming operations such as updateStateByKey and window operations, rather than by Delta Lake.
+
+Delta Lake uses its own transaction log to maintain the metadata for the Delta tables. The transaction log records all the changes made to a Delta table in the order in which they occur. These logs are stored in the WAL folder in the Delta table.
+
+In the event of a failure, both the Delta Lake transaction log and the WAL for the Spark stream's operations can be used to recover the lost data and bring the table back to its previous state. The WAL ensures that Spark Streaming data is fault-tolerant in case of failures, while the Delta Lake transaction log ensures the consistency of the table data.
+
+- in pyspark dataframe api we can use the spark.table() to load data from a streaming temp view back to a DataFrame
+- spark will always load streaming views as streaming data frames and static views as static data frames 
+	- incremental processing must be defined from the beginning with read logic to support incremental writing 
+
+### Incremental Data Ingestion
+- loading new data files since last ingestion
+- reduces redundant processing
+- 2 mechanisms:
+	- COPY INTO
+	- Auto loader
+- COPY INTO SQL command
+	- idempotently and incrementally load new data files
+		- files that have already been loaded are skipped
+
+```sql
+COPY INTO my_table
+FROM '/path/to/files'
+FILEFORMAT = CSV
+FORMAT_OPTIONS (
+'delimiter' = '|',
+'header' = 'true'
+)
+COPY_OPTIONS (
+'mergeSchema' = 'true'
+);
+```
+
+- Auto Loader structured streaming can process billions of files and support near real time ingestion of millions of files per hour; supports checkpointing with exactly once guarantees and fault tolerance
+- autoloader has syntax that uses cloudFiles
+```python
+
+spark.readStream
+	.format("cloudFiles")
+	.option("cloudFiles.format", <source_format>)
+	.option("cloudFiles.schemaLocation", <schema_directory>) # schema location will register the schema to preload it & thereby prevent the inference cost on startup of the writeStream's mergeSchema option set to true
+	.load('/path/to/files') # autoloader will detect new files as they arrive and queue them for ingestion
+.writeStream
+	.option("checkpointLocation", <checkpoint_directory>)
+	.option("mergeSchema", "true") # auto infer schema evolution and merge updates
+	.table(<table_name>)
+
+```
+- COPY INTO is less efficient and is better for an order of thousands of files; Auto Loader is better at scale and for an order of millions of files (it can set up series of batches); Auto Loader is default for cloud object storage
+
