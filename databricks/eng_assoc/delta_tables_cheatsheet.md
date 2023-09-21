@@ -186,6 +186,41 @@ GROUP BY customer_id; -- explode subquery isolates each item to a row; collect_s
 -- collect set = aggregate a Set (unique set of values)
 -- explode = extract JSON obj from array & put each on a separate row
 -- flatten = flatten nested arrays
+
+SELECT customer_id,
+  collect_set(books.book_id) As before_flatten,
+   flatten(collect_set(books.book_id)) AS after_flatten,
+  array_distinct(flatten(collect_set(books.book_id))) AS after_flatten_distinct
+FROM orders
+GROUP BY customer_id; -- before_flatten has a unique set of orders but not of books; after flatten has removed duplicate books across orders
+
+CREATE OR REPLACE VIEW orders_enriched AS
+SELECT *
+FROM (
+  SELECT *, explode(books) AS book 
+  FROM orders) o
+INNER JOIN books b
+ON o.book.book_id = b.book_id;
+SELECT * FROM orders_enriched; -- spark supports all joins incl inner outer right left cross anti and semi
+
+SELECT *
+FROM orders
+WHERE customer_id NOT IN (SELECT id FROM customers); -- anti-join
+
+SELECT DISTINCT customer_id
+FROM orders
+WHERE EXISTS (SELECT customers.id FROM customers WHERE customers.id = orders.customer_id); -- semi-join matches unique values from left table with a match in the right table (no nulls)
+
+SELECT DISTINCT customer_id
+FROM orders
+WHERE EXISTS (
+  SELECT id
+  FROM customers
+  WHERE customers.id = orders.customer_id AND customers.age = orders.customer_age
+); --In this query, the `EXISTS` operator in the subquery includes two matching conditions: `customers.id = orders.customer_id` and `customers.age = orders.customer_age`. Only those rows in the "orders" table for which both conditions are true will be returned in the outer query, producing only the matching customer IDs. In this way, you can extend the `EXISTS` operator to include multiple column matches.
+
+
+
 ````
 
 
