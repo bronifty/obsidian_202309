@@ -34,7 +34,19 @@ print(dataset_bookstore); # prints dbfs:/mnt/demo-datasets/bookstore
 %python
 books_csv = spark.sql(f"SELECT * FROM csv.`{dataset_bookstore}/books-csv/`") # use f-string to interpolate dataset_bookstore var
 display(books_csv) # displays a grid of the books
+
+%fs ls /databricks-datasets/ # keep ls-ing until you get to a physical file
+%fs ls /databricks-datasets/cs100/lab1/data-001/ # keep going
 ```
+
+```sql
+SELECT * FROM text.`/databricks-datasets/cs100/lab1/data-001/shakespeare.txt` -- select from a raw file directly after you find it
+```
+
+
+
+
+
 
 ```sql 
 CREATE TABLE IF NOT EXISTS smartphones
@@ -232,6 +244,34 @@ WHERE EXISTS (
   WHERE customers.id = orders.customer_id AND customers.age = orders.customer_age
 ); --In this query, the `EXISTS` operator in the subquery includes two matching conditions: `customers.id = orders.customer_id` and `customers.age = orders.customer_age`. Only those rows in the "orders" table for which both conditions are true will be returned in the outer query, producing only the matching customer IDs. In this way, you can extend the `EXISTS` operator to include multiple column matches.
 
+CREATE OR REPLACE TEMP VIEW orders_updates
+AS SELECT * FROM parquet.`${dataset.bookstore}/orders-new`;
+SELECT * FROM orders 
+UNION 
+SELECT * FROM orders_updates; -- union (combined results) - OR on venn diagram from entire result set not a single column
+
+SELECT * FROM orders 
+INTERSECT 
+SELECT * FROM orders_updates -- intersect (only intersecting results) - AND venn diagram
+
+SELECT * FROM orders 
+MINUS 
+SELECT * FROM orders_updates; --  only orders in first not in second (AND NOT in venn diagram)
+
+CREATE OR REPLACE TABLE transactions AS
+SELECT * FROM (
+  SELECT
+    customer_id,
+    book.book_id AS book_id,
+    book.quantity AS quantity
+  FROM orders_enriched
+) PIVOT (
+  sum(quantity) FOR book_id in (
+    'B01', 'B02', 'B03', 'B04', 'B05', 'B06',
+    'B07', 'B08', 'B09', 'B10', 'B11', 'B12'
+  )
+);
+SELECT * FROM transactions -- pivots book quantity across the columns providing a unique set of customer with all book ids in the columns and quantity in the row which looks like customer book1 book2 in the header and customer_1 1 null in the row
 
 
 ````
