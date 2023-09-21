@@ -21,6 +21,19 @@ display(files) # print the grid of the files
 
 %fs ls '/databricks-datasets' # list internal dbfs datasets
 %run ../another_file.py # import module
+
+
+%fs ls 'dbfs:/mnt/demo-datasets/bookstore' # list of demo datasets
+dataset_bookstore = 'dbfs:/mnt/demo-datasets/bookstore' # variablize datasets
+spark.conf.set(f"dataset.bookstore", dataset_bookstore) # spark conf with var
+
+%python 
+dataset_bookstore = spark.conf.get("dataset.bookstore"); # reinit var to spark conf
+print(dataset_bookstore); # prints dbfs:/mnt/demo-datasets/bookstore
+
+%python
+books_csv = spark.sql(f"SELECT * FROM csv.`{dataset_bookstore}/books-csv/`") # use f-string to interpolate dataset_bookstore var
+display(books_csv) # displays a grid of the books
 ```
 
 ```sql 
