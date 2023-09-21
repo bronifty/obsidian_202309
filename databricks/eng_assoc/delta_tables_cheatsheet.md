@@ -386,6 +386,11 @@ CREATE OR REPLACE TEMP VIEW author_counts_tmp_vw AS (
       .awaitTermination()
 ) # writeStream table can be overwritten with a new definition; this one processes everything synchronously and shuts down (batch mode)
 
+raw_orders = spark.sql(f"SELECT * FROM PARQUET.`{dataset_bookstore}/orders-raw/01.parquet`")
+display(raw_orders)
+
+
+
 ```
 
 
