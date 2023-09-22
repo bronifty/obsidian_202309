@@ -472,7 +472,7 @@ CREATE OR REPLACE TEMP VIEW daily_customer_books_tmp AS (
       .outputMode("complete")
       .option("checkpointLocation", "dbfs:/mnt/demo/checkpoints/daily_customer_books")
       .trigger(availableNow=True)
-      .table("daily_customer_books"))
+      .table("daily_customer_books")) # write stream to the gold layer
 
 for s in spark.streams.active:
     print("Stopping stream: " + s.id)
