@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "464ee86b1023a03f",
+        "id": "9d60d9678baf9b4d",
         "type": "tabs",
         "children": [
           {
-            "id": "7b7de08f7994509d",
+            "id": "f37e131ce220221f",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -20,7 +20,7 @@
             }
           },
           {
-            "id": "cebd0e92a6690dcd",
+            "id": "eeca4a8c91eeaf0b",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -169,10 +169,11 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "cebd0e92a6690dcd",
+  "active": "eeca4a8c91eeaf0b",
   "lastOpenFiles": [
     "databricks/eng_assoc/Data Engineering Associate.md",
     "databricks/eng_assoc/delta_tables_cheatsheet.md",
+    "Untitled.canvas",
     "the_primeagen/DSA.md",
     "the_primeagen/HackerRank Questions.md",
     "wing/wing notes.md",

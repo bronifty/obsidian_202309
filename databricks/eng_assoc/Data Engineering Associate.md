@@ -554,3 +554,64 @@ spark.readStream
 ```
 - COPY INTO is less efficient and is better for an order of thousands of files; Auto Loader is better at scale and for an order of millions of files (it can set up series of batches); Auto Loader is default for cloud object storage
 
+### Multi-Hop Medallion (Bronze Silver Gold) Architecture
+- bronze is raw
+- silver is filtered, cleaned, augmented (eg joined) - dim
+- gold is aggregated - fact
+
+
+
+```ts
+const schema = {
+     name: 'string',
+     age: 'number',
+     address: {
+       street: 'string',
+       city: 'string',
+       coordinates: ['number', 'number']
+     }
+   };
+```
+
+
+### Auto-Loader
+- first let's check on our data source files
+```python
+files = dbutils.fs.ls(f"{dataset_bookstore}/orders-raw")
+display(files);
+```
+
+```csv
+path,name,size,modificationTime
+dbfs:/mnt/demo-datasets/bookstore/orders-raw/01.parquet,01.parquet,18823,1695056227000
+dbfs:/mnt/demo-datasets/bookstore/orders-raw/02.parquet,02.parquet,18814,1695314844000
+dbfs:/mnt/demo-datasets/bookstore/orders-raw/03.parquet,03.parquet,18822,1695314881000
+```
+
+- next we will configure a read stream on our parquet source with auto loader using schema inference
+```python
+(spark.readStream
+    .format("cloudFiles")
+    .option("cloudFiles.format", "parquet")
+    .option("cloudFiles.schemaLocation", "dbfs:/mnt/demo/checkpoints/orders_raw")
+    .load(f"{dataset_bookstore}/orders-raw")
+    .createOrReplaceTempView("orders_raw_temp")) # registered streaming temp view for data transformation in spark sql
+```
+- this read stream is created but is not active until we do a display or write stream operation 
+
+- next we will create a new view atop the raw data view which is enriched with metadata of file name and insert time, which will be useful for troubleshooting data integrity issues
+```python
+CREATE OR REPLACE TEMPORARY VIEW orders_tmp AS (
+  SELECT *, current_timestamp() arrival_time, input_file_name() source_file
+  FROM orders_raw_temp
+)
+```
+
+- this query will be streaming (continuous) because it is based on a streaming view
+```sql
+%sql
+SELECT * FROM orders_tmp
+```
+
+- now we will put a writeStream on our 
+

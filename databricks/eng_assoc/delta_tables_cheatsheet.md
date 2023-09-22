@@ -390,21 +390,94 @@ raw_orders = spark.sql(f"SELECT * FROM PARQUET.`{dataset_bookstore}/orders-raw/0
 display(raw_orders)
 
 
-
+(spark.readStream
+        .format("cloudFiles")
+        .option("cloudFiles.format", "parquet")
+        .option("cloudFiles.schemaLocation", "dbfs:/mnt/demo/orders_checkpoint")
+        .load(f"{dataset_bookstore}/orders-raw")
+      .writeStream
+        .option("checkpointLocation", "dbfs:/mnt/demo/orders_checkpoint")
+        .table("orders_updates")
+) # Auto Loader
+%sql DESCRIBE HISTORY orders_updates
+%sql DROP TABLE orders_updates
+dbutils.fs.rm("dbfs:/mnt/demo/orders_checkpoint", True)
 ```
 
+- medallion architecture
+```python
+files = dbutils.fs.ls(f"{dataset_bookstore}/orders-raw")
+display(files) # read file system
 
-```ts
-const schema = {
-     name: 'string',
-     age: 'number',
-     address: {
-       street: 'string',
-       city: 'string',
-       coordinates: ['number', 'number']
-     }
-   };
+(spark.readStream
+    .format("cloudFiles")
+    .option("cloudFiles.format", "parquet")
+    .option("cloudFiles.schemaLocation", "dbfs:/mnt/demo/checkpoints/orders_raw")
+    .load(f"{dataset_bookstore}/orders-raw")
+    .createOrReplaceTempView("orders_raw_temp")) # create read stream and view
+
+%sql
+CREATE OR REPLACE TEMPORARY VIEW orders_tmp AS (
+  SELECT *, current_timestamp() arrival_time, input_file_name() source_file
+  FROM orders_raw_temp
+) # enrich the dataset with a new view
+
+(spark.table("orders_tmp")
+      .writeStream
+      .format("delta")
+      .option("checkpointLocation", "dbfs:/mnt/demo/checkpoints/orders_bronze")
+      .outputMode("append")
+      .table("orders_bronze")) # create a write stream to a table based on enriched view (write to the sink)
+
+(spark.read
+      .format("json")
+      .load(f"{dataset_bookstore}/customers-json")
+      .createOrReplaceTempView("customers_lookup")) # read customer dataset into a view 
+
+(spark.readStream
+  .table("orders_bronze")
+  .createOrReplaceTempView("orders_bronze_tmp")) # create readStream from orders_bronze delta table
+
+%sql
+CREATE OR REPLACE TEMPORARY VIEW orders_enriched_tmp AS (
+  SELECT order_id, quantity, o.customer_id, c.profile:first_name as f_name, c.profile:last_name as l_name,
+         cast(from_unixtime(order_timestamp, 'yyyy-MM-dd HH:mm:ss') AS timestamp) order_timestamp, books
+  FROM orders_bronze_tmp o
+  INNER JOIN customers_lookup c
+  ON o.customer_id = c.customer_id
+  WHERE quantity > 0); # create new view to join bronze orders with customer lookup data
+
+(spark.table("orders_enriched_tmp")
+      .writeStream
+      .format("delta")
+      .option("checkpointLocation", "dbfs:/mnt/demo/checkpoints/orders_silver")
+      .outputMode("append")
+      .table("orders_silver")) # write to the silver table sink
+
+(spark.readStream
+  .table("orders_silver")
+  .createOrReplaceTempView("orders_silver_tmp")) # readStream into view orders silver tmp
+
+%sql
+CREATE OR REPLACE TEMP VIEW daily_customer_books_tmp AS (
+  SELECT customer_id, f_name, l_name, date_trunc("DD", order_timestamp) order_date, sum(quantity) books_counts
+  FROM orders_silver_tmp
+  GROUP BY customer_id, f_name, l_name, date_trunc("DD", order_timestamp)
+  ) # new view enriches orders_silver_tmp with an aggregate
+
+
+(spark.table("daily_customer_books_tmp")
+      .writeStream
+      .format("delta")
+      .outputMode("complete")
+      .option("checkpointLocation", "dbfs:/mnt/demo/checkpoints/daily_customer_books")
+      .trigger(availableNow=True)
+      .table("daily_customer_books"))
+
+for s in spark.streams.active:
+    print("Stopping stream: " + s.id)
+    s.stop()
+    s.awaitTermination() # loop over each stream and quit (cleanup)
+
+
 ```
-
-
-
