@@ -601,4 +601,8 @@ GRANT SELECT ON TABLE my_table TO user_1@company.com
 - any number of catalogs can be created in Unity Catalog Metastore that can be shared with multiple workspaces
 	- dev > schema > table (accessible by workspace 1 in aws as well as workspace 2 in azure)
 	- prod > schema > table (accessible by workspace 1 in aws as well as workspace 2 in azure)
+- centralized governance
+- built-in search and discovery
+- automated lineage can identify where data is used across:  table, notebook, workflow, dashboard
+- no hard migration required
 
