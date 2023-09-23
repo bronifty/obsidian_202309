@@ -549,7 +549,7 @@ GRANT privilege ON object <object_name> TO <user_or_group>
 GRANT SELECT ON TABLE my_table TO user_1@company.com 
 ```
 
-#### Data Objects
+#### Data Objects - (legacy)
 - `Grant Privilege on Object <object-name> TO <user-or-group>`
 
 | Object | Scope |
@@ -559,9 +559,11 @@ GRANT SELECT ON TABLE my_table TO user_1@company.com
 | Table | controls access to an external or managed table |
 | View | view |
 | Function | function |
-| Any File | controls access to the underlying filesystem |
+| Read File | controls access to the underlying filesystem |
+| Write File | controls access to the underlying filesystem |
 
-#### Privileges
+
+#### Privileges 
 - `Grant Privilege on Object <object-name> TO <user-or-group>`
 
 | Privilege | Ability |
@@ -583,5 +585,20 @@ GRANT SELECT ON TABLE my_table TO user_1@company.com
 | Table owner | only the table |
 
 - Catalog > Schema (Database) > Table | View | Function
+- Grant, Deny, Revoke 
+- Show Grants
 
+
+### Unity Catalog Governance
+- Privileges: CREATE, USAGE, SELECT, MODIFY, READFILES, WRITEFILES, EXECUTE
+- Principals: User, Service Principal, Group
+- Securable Object: Storage Credential, External Location, Catalog, Share, Recipient, Schema (Database), Table, View, Function
+- GRANT Privilege ON securable_object TO Principal
+
+### Unity Catalog Metastore
+- Unity Catalog Metastore is a catalog of catalogs 
+- hive_metastore is a catalog of your schemas/databases tied to each workspace
+- any number of catalogs can be created in Unity Catalog Metastore that can be shared with multiple workspaces
+	- dev > schema > table (accessible by workspace 1 in aws as well as workspace 2 in azure)
+	- prod > schema > table (accessible by workspace 1 in aws as well as workspace 2 in azure)
 

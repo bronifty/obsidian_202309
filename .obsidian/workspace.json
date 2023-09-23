@@ -57,30 +57,29 @@
     "collapsed": true
   },
   "left-ribbon": {
-    "hiddenItems": {
-      "command-palette:Open command palette": false
-    }
+    "hiddenItems": {}
   },
   "active": "a87df9442924c67c",
   "lastOpenFiles": [
-    "databricks/eng_assoc/delta_tables_cheatsheet.md",
     "databricks/eng_assoc/Data Engineering Associate.md",
+    "databricks/lakehouse_fundamentals/Databricks Lakehouse Fundamentals.md",
+    "databricks/lakehouse_fundamentals/media/lakehouse_fundamentals/databricks course-catalog.pdf",
+    "databricks/eng_assoc/media/Set+Up+Delta+Tables.pdf",
+    "databricks/eng_assoc/media/Relational+Entities+on+Databricks.pdf",
+    "databricks/eng_assoc/media/Querying+Files.pdf",
+    "databricks/eng_assoc/delta_tables_cheatsheet.md",
     "Untitled 1.canvas",
     "Untitled.canvas",
     "the_primeagen/DSA.md",
     "the_primeagen/HackerRank Questions.md",
     "wing/wing notes.md",
     "wing",
-    "databricks/lakehouse_fundamentals/Databricks Lakehouse Fundamentals.md",
     "aws_fundamentals/aws_fundamentals.md",
     "aws_fundamentals/media/aws_fundamentals_1.png",
     "aws_fundamentals/media/aws_fundamentals_2.png",
     "aws_fundamentals/media",
     "aws_fundamentals",
-    "databricks/eng_assoc/media/Querying+Files.pdf",
     "databricks/eng_assoc/media",
-    "databricks/eng_assoc/media/Relational+Entities+on+Databricks.pdf",
-    "databricks/eng_assoc/media/Set+Up+Delta+Tables.pdf",
     "databricks/eng_assoc/Course+Materials 1.dbc",
     "databricks/eng_assoc/Course+Materials.dbc",
     "wasm/wasmcloud/NATS.md",
@@ -90,7 +89,6 @@
     "wasm/dynamic linking of wasm in browser.md",
     "wasm/components share interface make http requests to link for modularity without microservices.png",
     "wasm/bytecode alliance/wasi cloud bytecode alliance roadmap.png",
-    "databricks/eng_assoc",
     "databricks/lakehouse_fundamentals/media/lakehouse_fundamentals/databricks_8.png",
     "databricks/lakehouse_fundamentals/media/lakehouse_fundamentals/databricks_6.png",
     "databricks/lakehouse_fundamentals/media/lakehouse_fundamentals/databricks_5.png",
