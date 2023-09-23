@@ -613,5 +613,18 @@ CREATE OR REPLACE TEMPORARY VIEW orders_tmp AS (
 SELECT * FROM orders_tmp
 ```
 
-- now we will put a writeStream on our 
+### CDC with DLT
+```sql
 
+
+CREATE OR REFRESH STREAMING LIVE TABLE table_name;
+
+APPLY CHANGES INTO LIVE.target_table
+  FROM STREAM(LIVE.cdc_feed_table)
+  KEYS (key_field)
+  APPLY AS DELETE WHEN operation_field = "DELETE"
+  SEQUENCE BY sequence_field
+  COLUMNS * 
+
+
+```

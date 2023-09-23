@@ -479,5 +479,109 @@ for s in spark.streams.active:
     s.stop()
     s.awaitTermination() # loop over each stream and quit (cleanup)
 
+```
+
+### Delta Live Tables
+```sql
+CREATE OR REFRESH STREAMING LIVE TABLE orders_raw
+COMMENT "The raw books orders, ingested from orders-raw"
+AS SELECT * FROM cloud_files("${datasets_path}/orders-json-raw", "json",
+                             map("cloudFiles.inferColumnTypes", "true")); -- incrementally load data via Auto Loader; cloud_files method enables auto loader use natively with sql; takes 3 params:  1) source dir 2) source data type 3) array of reader opts
+
+CREATE OR REFRESH STREAMING LIVE TABLE orders_cleaned (
+  CONSTRAINT valid_order_number EXPECT (order_id IS NOT NULL) ON VIOLATION DROP ROW 
+)
+COMMENT "The cleaned books orders with valid order_id"
+AS
+  SELECT order_id, quantity, o.customer_id, c.profile:first_name as f_name, c.profile:last_name as l_name,
+         cast(from_unixtime(order_timestamp, 'yyyy-MM-dd HH:mm:ss') AS timestamp) order_timestamp, o.books,
+         c.profile:address:country as country
+  FROM STREAM(LIVE.orders_raw) o
+  LEFT JOIN LIVE.customers c
+    ON o.customer_id = c.customer_id; -- join order & customer dropping any row with null order_id; constraint violation behavior is a) drop row b) fail update (fail pipeline) c) omitted (keep and report in metrics)
+
+CREATE OR REFRESH LIVE TABLE fr_daily_customer_books
+COMMENT "Daily number of books per customer in France"
+AS
+  SELECT customer_id, f_name, l_name, date_trunc("DD", order_timestamp) order_date, sum(quantity) books_counts
+  FROM LIVE.orders_cleaned
+  WHERE country = "France"
+  GROUP BY customer_id, f_name, l_name, date_trunc("DD", order_timestamp) -- gold layer with aggregate
 
 ```
+
+%md
+
+>> Constraint violation
+| **`ON VIOLATION`** | Behavior |
+| --- | --- |
+| **`DROP ROW`** | Discard records that violate constraints |
+| **`FAIL UPDATE`** | Violated constraint causes the pipeline to fail |
+| Omitted | Records violating constraints will be kept, and reported in metrics |
+
+```python
+files = dbutils.fs.ls("dbfs:/mnt/demo/dlt/demo_bookstore")
+display(files)
+files = dbutils.fs.ls("dbfs:/mnt/demo/dlt/demo_bookstore/system/events")
+display(files)
+%sql
+SELECT * FROM delta.`dbfs:/mnt/demo/dlt/demo_bookstore/system/events`
+
+```
+
+### CDC with DLT
+```sql
+CREATE OR REFRESH STREAMING LIVE TABLE books_silver;
+APPLY CHANGES INTO LIVE.books_silver
+  FROM STREAM(LIVE.books_bronze)
+  KEYS (book_id)
+  APPLY AS DELETE WHEN row_status = "DELETE"
+  SEQUENCE BY row_time
+  COLUMNS * EXCEPT (row_status, row_time)
+  
+  
+```
+
+### Data Governance
+- grant deny and revoke previously granted access to data objects
+```sql
+GRANT privilege ON object <object_name> TO <user_or_group>
+GRANT SELECT ON TABLE my_table TO user_1@company.com 
+```
+
+#### Data Objects
+- `Grant Privilege on Object <object-name> TO <user-or-group>`
+
+| Object | Scope |
+| --- | ------------------------------------------------- |
+| Catalog | controls access to catalog |
+| Schema | controls access to schema |
+| Table | controls access to an external or managed table |
+| View | view |
+| Function | function |
+| Any File | controls access to the underlying filesystem |
+
+#### Privileges
+- `Grant Privilege on Object <object-name> TO <user-or-group>`
+
+| Privilege | Ability |
+| ----------|---------|
+| SELECT | read access to an object |
+| MODIFY | add, delete, and modify data to or from an object |
+| CREATE | create an object |
+| READ_METADATA | view an object and its metadata |
+| USAGE | no effect; required to perform any action on a db obj |
+| ALL PRIVILEGES | gives all privileges |
+
+- Granting Privileges by Role
+
+| Role | Con grant access privileges for |
+| ---- | --------------------------------|
+| Databricks admin | all objects in the cata log and the underlying filesystem | 
+| Catalog owner | all objects in the catalog | 
+| Database owner | all objects in the database |
+| Table owner | only the table |
+
+- Catalog > Schema (Database) > Table | View | Function
+
+
