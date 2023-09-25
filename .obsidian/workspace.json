@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "e89abff3b319918e",
+        "id": "defcdd4b67206e9d",
         "type": "tabs",
         "children": [
           {
-            "id": "a87df9442924c67c",
+            "id": "c40c9365252d0f27",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "databricks/eng_assoc/delta_tables_cheatsheet.md",
+                "file": "the_primeagen/DSA.md",
                 "mode": "source",
                 "source": false
               }
@@ -46,7 +46,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 200,
+    "collapsed": true
   },
   "right": {
     "id": "c2487d2f122ddb5e",
@@ -59,19 +60,22 @@
   "left-ribbon": {
     "hiddenItems": {}
   },
-  "active": "a87df9442924c67c",
+  "active": "abcebfa42c43424e",
   "lastOpenFiles": [
+    "the_primeagen/katas.md",
+    "the_primeagen/DSA.md",
+    "the_primeagen/HackerRank Questions.md",
+    "intuit_bookkeeping/intuit_academy.md",
+    "intuit_bookkeeping",
+    "databricks/eng_assoc/delta_tables_cheatsheet.md",
     "databricks/eng_assoc/Data Engineering Associate.md",
     "databricks/lakehouse_fundamentals/Databricks Lakehouse Fundamentals.md",
     "databricks/lakehouse_fundamentals/media/lakehouse_fundamentals/databricks course-catalog.pdf",
     "databricks/eng_assoc/media/Set+Up+Delta+Tables.pdf",
     "databricks/eng_assoc/media/Relational+Entities+on+Databricks.pdf",
     "databricks/eng_assoc/media/Querying+Files.pdf",
-    "databricks/eng_assoc/delta_tables_cheatsheet.md",
     "Untitled 1.canvas",
     "Untitled.canvas",
-    "the_primeagen/DSA.md",
-    "the_primeagen/HackerRank Questions.md",
     "wing/wing notes.md",
     "wing",
     "aws_fundamentals/aws_fundamentals.md",
@@ -81,7 +85,6 @@
     "aws_fundamentals",
     "databricks/eng_assoc/media",
     "databricks/eng_assoc/Course+Materials 1.dbc",
-    "databricks/eng_assoc/Course+Materials.dbc",
     "wasm/wasmcloud/NATS.md",
     "wasm/wasmcloud/Bailey.md",
     "wasm/wasmcloud/Elm Architecture.md",
