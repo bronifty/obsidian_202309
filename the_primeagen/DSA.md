@@ -102,7 +102,6 @@ export default function bubble_sort(arr: number[]): void {
 }
 ```
 
-
 - Queue
 ```ts
 type Node<T> = {
