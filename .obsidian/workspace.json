@@ -46,8 +46,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 200
   },
   "right": {
     "id": "c2487d2f122ddb5e",
@@ -60,7 +59,7 @@
   "left-ribbon": {
     "hiddenItems": {}
   },
-  "active": "abcebfa42c43424e",
+  "active": "c40c9365252d0f27",
   "lastOpenFiles": [
     "the_primeagen/katas.md",
     "the_primeagen/DSA.md",

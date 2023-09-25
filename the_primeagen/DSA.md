@@ -33,6 +33,20 @@ for (let i=0; i<n.length; i++) {
 ```
 
 ### Implementations
+
+- Linear Search
+```ts
+let index = 0;
+export default function linear_search(haystack: number[], needle: number): any {
+    for (let i = 0; i < haystack.length; ++i) {
+        if (haystack[i] === needle) {
+            return true;
+        }
+    }
+    return false;
+}
+```
+
 - Binary Search
 ```ts
 export default function bs_list(haystack: number[], needle: number): any {
@@ -50,6 +64,41 @@ export default function bs_list(haystack: number[], needle: number): any {
         }
     } while (lo < hi);
     return false;
+}
+```
+
+- Two Crystal Balls Problem
+```ts
+export default function two_crystal_balls(breaks: boolean[]): number {
+    let interval = Math.floor(Math.sqrt(breaks.length));
+    let start = 0;
+    for (let i = 0; i < breaks.length; i += interval) {
+        if (breaks[i]) {
+            break;
+        }
+        start += interval;
+    }
+    for (let j = 0; j < breaks.length; ++j) {
+        if (breaks[j]) {
+            return j;
+        }
+    }
+    return -1;
+}
+```
+
+- Bubble Sort
+```ts
+export default function bubble_sort(arr: number[]): void {
+    for (let i = 0; i < arr.length; ++i) {
+        for (let j = 0; j < arr.length - 1 - i; ++j) {
+            if (arr[j] > arr[j + 1]) {
+                let intermediateVal = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = intermediateVal;
+            }
+        }
+    }
 }
 ```
 
