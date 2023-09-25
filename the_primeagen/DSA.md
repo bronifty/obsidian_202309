@@ -229,3 +229,92 @@ export default class DoublyLinkedList<T> {
 }
 ```
 
+- ArrayList
+```ts
+// export default class ArrayList<T> {
+//     public length: number;
+
+//     constructor() {
+//     }
+
+//     prepend(item: T): void {
+
+// }
+//     insertAt(item: T, idx: number): void {
+
+// }
+//     append(item: T): void {
+
+// }
+//     remove(item: T): T | undefined {
+
+// }
+//     get(idx: number): T | undefined {
+
+// }
+//     removeAt(idx: number): T | undefined {
+
+// }
+// }
+
+export default class ArrayList<T> {
+    private items: T[];
+    public length: number;
+    private capacity: number;
+
+    constructor(capacity: number) {
+        this.capacity = capacity;
+        this.items = [];
+        this.length = 0;
+    }
+
+    prepend(item: T): void {
+        this.items.unshift(item);
+        this.length++;
+    }
+
+    insertAt(item: T, idx: number): void {
+        if (idx < 0 || idx > this.length) {
+            throw new Error("Index out of bounds");
+        }
+        this.items.splice(idx, 0, item);
+        this.length++;
+    }
+
+    append(item: T): void {
+        this.items.push(item);
+        this.length++;
+    }
+
+    remove(item: T): T | undefined {
+        const index = this.items.indexOf(item);
+        if (index !== -1) {
+            this.length--;
+            return this.items.splice(index, 1)[0];
+        }
+        return undefined;
+    }
+
+    get(idx: number): T | undefined {
+        if (idx < 0 || idx >= this.length) {
+            return undefined;
+        }
+        return this.items[idx];
+    }
+
+    removeAt(idx: number): T | undefined {
+        if (idx < 0 || idx >= this.length) {
+            return undefined;
+        }
+        this.length--;
+        return this.items.splice(idx, 1)[0];
+    }
+}
+```
+
+- Pros and Cons of Array List versus regular linked list 
+	- random access, traversal, array brackets are easy access with array
+	- enqueue (FIFO) is linear time required to shift every item right from the tail to the head in an ArrayList, whereas in a regular linked list, this is constant time
+	- push/pop (LIFO) stack structure is easier 
+- interview question: how would you implement an async request queue? linked list because adding and removing from the ends is constant time in queue and there is no reason to use random access
+
