@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "the_primeagen/DSA.md",
+                "file": "wing/wing.md",
                 "mode": "source",
                 "source": false
               }
@@ -61,8 +61,10 @@
   },
   "active": "c40c9365252d0f27",
   "lastOpenFiles": [
-    "the_primeagen/katas.md",
+    "wing/wing notes.md",
+    "wing/wing.md",
     "the_primeagen/DSA.md",
+    "the_primeagen/katas.md",
     "the_primeagen/HackerRank Questions.md",
     "intuit_bookkeeping/intuit_academy.md",
     "intuit_bookkeeping",
@@ -75,7 +77,6 @@
     "databricks/eng_assoc/media/Querying+Files.pdf",
     "Untitled 1.canvas",
     "Untitled.canvas",
-    "wing/wing notes.md",
     "wing",
     "aws_fundamentals/aws_fundamentals.md",
     "aws_fundamentals/media/aws_fundamentals_1.png",
