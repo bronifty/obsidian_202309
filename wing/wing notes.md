@@ -6,3 +6,5 @@ Fargate Task Group
 Kubernetes Deployment  
 Nomad Job
 
+https://github.com/winglang/wing/pull/4351/files
+
