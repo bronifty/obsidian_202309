@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "wing/wing notes.md",
+                "file": "sqlite_turso/sqlite.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -62,9 +62,11 @@
   },
   "active": "c40c9365252d0f27",
   "lastOpenFiles": [
+    "wing/wing notes.md",
+    "sqlite_turso/sqlite.md",
+    "sqlite_turso",
     "wing/wing.md",
     "wing/file management.md",
-    "wing/wing notes.md",
     "the_primeagen/DSA.md",
     "the_primeagen/katas.md",
     "the_primeagen/HackerRank Questions.md",
@@ -86,7 +88,6 @@
     "aws_fundamentals/media",
     "aws_fundamentals",
     "databricks/eng_assoc/media",
-    "databricks/eng_assoc/Course+Materials 1.dbc",
     "wasm/wasmcloud/NATS.md",
     "wasm/wasmcloud/Bailey.md",
     "wasm/wasmcloud/Elm Architecture.md",
@@ -108,7 +109,6 @@
     "marc_grabanski/Patterns for Reactivity with Modern Vanilla JS.md",
     "corbin_crutchley/JS This.md",
     "Josh Comeau/CSS For JS 1.md",
-    "8 Josh Comeau/CSS For JS 1.md",
-    "7 Marc Grabanski/Patterns for Reactivity with Modern Vanilla JS.md"
+    "8 Josh Comeau/CSS For JS 1.md"
   ]
 }
