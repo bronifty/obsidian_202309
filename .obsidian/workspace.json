@@ -60,9 +60,11 @@
   "left-ribbon": {
     "hiddenItems": {}
   },
-  "active": "06c00939fec0dc25",
+  "active": "abcebfa42c43424e",
   "lastOpenFiles": [
-    "sqlite_turso/cjs_esm_interop_sqlite.png",
+    "sqlite_turso/medias",
+    "sqlite_turso/medias/requireFromUrl_not_working.png",
+    "sqlite_turso/medias/cjs_esm_interop_sqlite.png",
     "sqlite_turso/sqlite.md",
     "wing/wing notes.md",
     "sqlite_turso",
@@ -100,7 +102,6 @@
     "databricks/lakehouse_fundamentals/media/lakehouse_fundamentals/databricks_6.png",
     "databricks/lakehouse_fundamentals/media/lakehouse_fundamentals/databricks_5.png",
     "databricks/lakehouse_fundamentals/media/lakehouse_fundamentals/databricks_4.png",
-    "databricks/lakehouse_fundamentals/media/lakehouse_fundamentals/databricks_3.png",
     "media/lake.md",
     "logic room/Notes.md",
     "the_primeagen/Deep Copy.md",

@@ -31,6 +31,6 @@ export default db;
 // console.log(rs);
 ```
 - cjs esm interop for @libsql/client
-![cjs esm interop sqlite client](./cjs_esm_interop_sqlite.png)
-
+![cjs esm interop sqlite client](cjs_esm_interop_sqlite.png)
+![](./medias/requireFromUrl_not_working.png)
 
