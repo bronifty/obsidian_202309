@@ -10,9 +10,11 @@ CREATE TABLE medias (
 );
 ALTER TABLE medias ADD COLUMN id TEXT;
 INSERT INTO medias (id, name, caption) VALUES ("1", "2", "3");
+.header on
+.tables
+.schema medias
 SELECT * FROM medias;
 DELETE FROM medias;
-.tables
 .quit
 ```
 
