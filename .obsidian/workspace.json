@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "defcdd4b67206e9d",
+        "id": "641c5f10b3ef63f0",
         "type": "tabs",
         "children": [
           {
-            "id": "c40c9365252d0f27",
+            "id": "06c00939fec0dc25",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -60,10 +60,11 @@
   "left-ribbon": {
     "hiddenItems": {}
   },
-  "active": "c40c9365252d0f27",
+  "active": "06c00939fec0dc25",
   "lastOpenFiles": [
-    "wing/wing notes.md",
+    "sqlite_turso/cjs_esm_interop_sqlite.png",
     "sqlite_turso/sqlite.md",
+    "wing/wing notes.md",
     "sqlite_turso",
     "wing/wing.md",
     "wing/file management.md",
@@ -100,7 +101,6 @@
     "databricks/lakehouse_fundamentals/media/lakehouse_fundamentals/databricks_5.png",
     "databricks/lakehouse_fundamentals/media/lakehouse_fundamentals/databricks_4.png",
     "databricks/lakehouse_fundamentals/media/lakehouse_fundamentals/databricks_3.png",
-    "databricks/lakehouse_fundamentals/media/lakehouse_fundamentals/databricks_2.png",
     "media/lake.md",
     "logic room/Notes.md",
     "the_primeagen/Deep Copy.md",
@@ -108,7 +108,6 @@
     "marc_grabanski/Observable.md",
     "marc_grabanski/Patterns for Reactivity with Modern Vanilla JS.md",
     "corbin_crutchley/JS This.md",
-    "Josh Comeau/CSS For JS 1.md",
-    "8 Josh Comeau/CSS For JS 1.md"
+    "Josh Comeau/CSS For JS 1.md"
   ]
 }

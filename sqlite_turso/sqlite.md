@@ -30,5 +30,7 @@ export default db;
 // const rs = await db.execute("SELECT * FROM medias");
 // console.log(rs);
 ```
+- cjs esm interop for @libsql/client
+![cjs esm interop sqlite client](./cjs_esm_interop_sqlite.png)
 
 
